@@ -8,7 +8,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  padding: 5%;
+  padding: 0;
   align: left;
   list-style-type: none;
   margin: 0;
@@ -27,7 +27,15 @@ body {
   padding: 7px;
   text-decoration: none;
 }
-#nav li:hover {
+#nav li a:hover {
   background-color: cyan;
   color: black;
+}
+#title {
+  color: cyan;
+  font-family: "Brush Script MT", cursive;
+}
+#content {
+  color: white;
+  text-align: center;
 }
