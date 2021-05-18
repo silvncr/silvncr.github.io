@@ -3,3 +3,31 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+#nav {
+  background-color: rgba(135,206,250,0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5%;
+  align: left;
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Courier New", monospace;
+  border: 2px solid #070C1C;
+}
+#nav li {
+  float: left;
+  border-right:2px solid #070C1C;
+}
+#nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 7px;
+  text-decoration: none;
+}
+#nav li:hover {
+  background-color: cyan;
+  color: black;
+}
