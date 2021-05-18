@@ -34,8 +34,27 @@ body {
 #title {
   color: cyan;
   font-family: "Brush Script MT", cursive;
+  font-size: 500%;
 }
 #content {
   color: white;
   text-align: center;
+  font-family: "Courier New", monospace;
+}
+#content a {
+  color: cyan;
+  text-decoration: none;
+}
+#content p {
+  font-weight: bold;
+}
+#content #pics img {
+  background-color: rgba(135,206,250,0.5);
+  padding: 2px;
+  margin: 0;
+  overflow: hidden;
+  border: 2px solid #070C1C;
+}
+a:hover {
+  cursor: pointer;
 }
