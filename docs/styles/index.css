@@ -58,3 +58,12 @@ body {
 a:hover {
   cursor: pointer;
 }
+#m-button {
+  position: fixed;
+  float: right;
+  top: 0;
+  right: 0;
+}
+.trophies {
+
+}
