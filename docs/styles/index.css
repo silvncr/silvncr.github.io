@@ -18,7 +18,7 @@ body {
 }
 #nav li {
   float: left;
-  border-right:2px solid #070C1C;
+  border-right: 2px solid #070C1C;
 }
 #nav li a {
   display: block;
@@ -59,11 +59,12 @@ a:hover {
   cursor: pointer;
 }
 #m-button {
+  background-color: black;
   position: fixed;
   float: right;
   top: 0;
   right: 0;
 }
 .trophies {
-
+  bottom: 0;
 }
