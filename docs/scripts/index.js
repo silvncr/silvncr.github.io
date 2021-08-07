@@ -1,6 +1,3 @@
-var pogo = function(){
-  alert('My Pokémon GO Friend Code is: 8363 7590 4463')
-};
 var m10 = function() {
   alert('Pokemon PythonRed Mystery Gift #10: "TITLE"');
 };
