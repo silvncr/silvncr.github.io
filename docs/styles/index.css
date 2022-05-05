@@ -1,70 +1,70 @@
 body {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 }
 #nav {
-  background-color: rgba(135,206,250,0.5);
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  align: left;
-  list-style-type: none;
-  margin: 0;
-  overflow: hidden;
-  font-family: "Courier New", monospace;
-  border: 2px solid #070C1C;
+	background-color: rgba(135,206,250,0.5);
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 0;
+	text-align: left;
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+	font-family: "Courier New", monospace;
+	border: 2px solid #070C1C;
 }
 #nav li {
-  float: left;
-  border-right: 2px solid #070C1C;
+	float: left;
+	border-right: 2px solid #070C1C;
 }
 #nav li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 7px;
-  text-decoration: none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 7px;
+	text-decoration: none;
 }
 #nav li a:hover {
-  background-color: cyan;
-  color: black;
+	background-color: cyan;
+	color: black;
 }
 #title {
-  color: cyan;
-  font-family: "Brush Script MT", cursive;
-  font-size: 500%;
+	color: cyan;
+	font-family: "Brush Script MT", cursive;
+	font-size: 500%;
 }
 #content {
-  color: white;
-  text-align: center;
-  font-family: "Courier New", monospace;
+	color: white;
+	text-align: center;
+	font-family: "Courier New", monospace;
 }
 #content a {
-  color: cyan;
-  text-decoration: none;
+	color: cyan;
+	text-decoration: none;
 }
 #content p {
-  font-weight: bold;
+	font-weight: bold;
 }
 #content #pics img {
-  background-color: rgba(135,206,250,0.5);
-  padding: 2px;
-  margin: 0;
-  overflow: hidden;
-  border: 2px solid #070C1C;
+	background-color: rgba(135,206,250,0.5);
+	padding: 2px;
+	margin: 0;
+	overflow: hidden;
+	border: 2px solid #070C1C;
 }
 a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 #m-button {
-  background-color: black;
-  position: fixed;
-  float: right;
-  top: 0;
-  right: 0;
+	background-color: black;
+	position: fixed;
+	float: right;
+	top: 0;
+	right: 0;
 }
 .trophies {
-  bottom: 0;
+	bottom: 0;
 }
