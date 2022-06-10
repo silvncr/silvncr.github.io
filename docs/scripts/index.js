@@ -81,19 +81,19 @@ const json = {
 			"image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Official_YAML_Logo.svg"
 		}
 	]
-};
+}
 window.onload = function () {
 	for (let i = 0; i < json.lang.length; i++) {
 		if (json.lang[i].image) {
-			document.getElementById("pics").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.lang[i].image}" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`;
+			document.getElementById("pics").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.lang[i].image}" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
 		} else {
-			document.getElementById("pics").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${json.lang[i].name}/${json.lang[i].name}-original.svg" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`;
+			document.getElementById("pics").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${json.lang[i].name}/${json.lang[i].name}-original.svg" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
 		}
 	}
 }
 var m10 = function () {
-	alert('Pokemon PythonRed Mystery Gift #10: "TITLE"');
+	alert('Pokemon PythonRed Mystery Gift #10: "TITLE"')
 }
 var m12 = function () {
-	alert('Pokemon PythonRed Mystery Gift #12: "CORRECT"');
+	alert('Pokemon PythonRed Mystery Gift #12: "CORRECT"')
 }
