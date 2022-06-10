@@ -48,6 +48,9 @@ body {
 #content p {
 	font-weight: bold;
 }
+#content #pics {
+	width: 50%;
+}
 #content #pics img {
 	background-color: rgba(135,206,250,0.5);
 	padding: 2px;
