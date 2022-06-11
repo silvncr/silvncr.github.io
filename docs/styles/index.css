@@ -1,4 +1,5 @@
 body {
+	background-color: black;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -45,13 +46,14 @@ body {
 	color: cyan;
 	text-decoration: none;
 }
-#content p {
+#content p, #content h3 {
+	width: 80%;
 	font-weight: bold;
 }
-#content #pics {
-	width: 50%;
+#content #lang {
+	width: 80%;
 }
-#content #pics img {
+#content #lang img {
 	background-color: rgba(135,206,250,0.5);
 	padding: 2px;
 	margin: 0;
@@ -61,13 +63,7 @@ body {
 a:hover {
 	cursor: pointer;
 }
-#m-button {
-	background-color: black;
-	position: fixed;
-	float: right;
-	top: 0;
-	right: 0;
-}
-.trophies {
+#trophies {
+	width: 80%;
 	bottom: 0;
 }
