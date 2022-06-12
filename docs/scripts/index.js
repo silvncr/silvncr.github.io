@@ -1,42 +1,41 @@
 const json = {
-	"nav": [
-		{
-			"link": "https://github.com/TurnipGuy30",
-			"label": "GitHub"
-		},
-		{
-			"link": "https://www.khanacademy.org/profile/TurnipGuy30",
-			"label": "Khan Academy"
-		},
-		{
-			"link": "https://stackexchange.com/users/21928188/turnipguy30",
-			"label": "StackExchange"
-		},
-		{
-			"link": "https://gdbrowser.com/u/TurnipGuy30",
-			"label": "Geometry Dash"
-		},
-		{
-			"link": "https://turnipguy30.github.io/DT",
-			"label": "My Projects"
-		}
-	],
 	"badge": [
 		{
+			"name": "views",
 			"link": "https://github.com/TurnipGuy30",
 			"image": "https://gpvc.arturio.dev/TurnipGuy30"
 		},
 		{
-			"link": "https://github.com/TurnipGuy30",
+			"name": "stars",
+			"link": "https://github.com/TurnipGuy30/?tab=repositories",
 			"image": "https://img.shields.io/github/stars/TurnipGuy30"
 		},
 		{
-			"link": "https://github.com/Pokemon-PythonRed",
-			"image": "https://img.shields.io/badge/Working%20on-Pokémon%20PythonRed-red"
-		},
-		{
+			"name": "wakatime",
 			"link": "https://wakatime.com/@580a86f3-d10f-4415-ac5c-b9a0b252a2fb",
 			"image": "https://wakatime.com/badge/user/580a86f3-d10f-4415-ac5c-b9a0b252a2fb.svg"
+		}
+	],
+	"card": [
+		{
+			"owner": "Pokemon-PythonRed",
+			"repo": "Pokemon-PythonRed"
+		},
+		{
+			"owner": "PradoLang",
+			"repo": "Prado"
+		},
+		{
+			"repo": "Helloz"
+		},
+		{
+			"repo": "School"
+		},
+		{
+			"repo": "Celebi"
+		},
+		{
+			"repo": "BF"
 		}
 	],
 	"lang": [
@@ -100,7 +99,7 @@ const json = {
 		},
 		{
 			"name": "jupyter",
-			"link": "https://jupyter.org/",
+			"link": "https://jupyter.org/"
 		},
 		{
 			"name": "markdown",
@@ -145,26 +144,36 @@ const json = {
 			"image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Official_YAML_Logo.svg"
 		}
 	],
-	"card": [
+	"nav": [
 		{
-			"owner": "Pokemon-PythonRed",
-			"repo": "Pokemon-PythonRed"
+			"link": "https://github.com/TurnipGuy30",
+			"label": "GitHub"
 		},
 		{
-			"owner": "PradoLang",
-			"repo": "Prado"
+			"link": "https://www.khanacademy.org/profile/TurnipGuy30",
+			"label": "Khan Academy"
 		},
 		{
-			"repo": "Helloz"
+			"link": "https://stackexchange.com/users/21928188/turnipguy30",
+			"label": "StackExchange"
 		},
 		{
-			"repo": "School"
+			"link": "https://gdbrowser.com/u/TurnipGuy30",
+			"label": "Geometry Dash"
 		},
 		{
-			"repo": "Celebi"
+			"link": "https://turnipguy30.github.io/DT",
+			"label": "My Projects"
+		}
+	],
+	"stat": [
+		{
+			"name": "trophies",
+			"image": "https://github-profile-trophy.vercel.app/?username=TurnipGuy30&theme=dracula&no-frame=true&column=8"
 		},
 		{
-			"repo": "BF"
+			"name": "languages",
+			"image": "https://github-readme-stats.vercel.app/api/top-langs?username=turnipguy30&show_icons=true&locale=en&layout=compact&theme=tokyonight&langs_count=10&custom_title=Most%20Used%20Languages%20%28Complete%29"
 		}
 	]
 }
@@ -173,7 +182,17 @@ window.onload = function () {
 		document.getElementById("nav").innerHTML += `<li><a href="${json.nav[i].link}" target="_blank" rel="noopener noreferrer"><span>${json.nav[i].label}</span></a></li>`
 	}
 	for (let i = 0; i < json.badge.length; i++) {
-		document.getElementById("badge").innerHTML += `<a href="${json.badge[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.badge[i].image}"></a>\n`
+		document.getElementById("badge").innerHTML += `<a href="${json.badge[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.badge[i].image}" alt="${json.badge[i].name}"></a>\n`
+	}
+	for (let i = 0; i < json.lang.length; i++) {
+		if (json.lang[i].image) {
+			document.getElementById("lang").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.lang[i].image}" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
+		} else {
+			document.getElementById("lang").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${json.lang[i].name}/${json.lang[i].name}-original.svg" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
+		}
+	}
+	for (let i = 0; i < json.stat.length; i++) {
+		document.getElementById("stat").innerHTML += `<img id="${json.stat[i].name}" src="${json.stat[i].image}" alt="${json.stat[i].name}">\n`
 	}
 	for (let i = 0; i < json.card.length; i++) {
 		if (json.card[i].owner) {
@@ -184,13 +203,6 @@ window.onload = function () {
 			}
 		} else {
 			document.getElementById("card").innerHTML += `<a href="https://github.com/TurnipGuy30/${json.card[i].repo}" target="_blank" rel="noopener noreferrer"><img alt="TurnipGuy30/${json.card[i].repo}" src="https://github-readme-stats.vercel.app/api/pin/?username=TurnipGuy30&repo=${json.card[i].repo}&theme=tokyonight&show_owner=false" width="400" height="150"></a>\n`
-		}
-	}
-	for (let i = 0; i < json.lang.length; i++) {
-		if (json.lang[i].image) {
-			document.getElementById("lang").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.lang[i].image}" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
-		} else {
-			document.getElementById("lang").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${json.lang[i].name}/${json.lang[i].name}-original.svg" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
 		}
 	}
 }
