@@ -169,7 +169,7 @@ const json = {
 	"stat": [
 		{
 			"name": "trophies",
-			"image": "https://github-profile-trophy.vercel.app/?username=TurnipGuy30&theme=dracula&no-frame=true&column=8"
+			"image": "https://github-profile-trophy.vercel.app/?username=TurnipGuy30&theme=dracula&no-frame=true&column=-1"
 		},
 		{
 			"name": "languages",
