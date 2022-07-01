@@ -34,9 +34,6 @@ const json = {
 		{
 			"repo": "Celebi"
 		},
-		{
-			"repo": "BF"
-		}
 	],
 	"lang": [
 		{
