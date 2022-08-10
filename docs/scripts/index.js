@@ -16,6 +16,7 @@ const json = {
 			"image": "https://wakatime.com/badge/user/580a86f3-d10f-4415-ac5c-b9a0b252a2fb.svg"
 		}
 	],
+	/*
 	"card": [
 		{
 			"owner": "Pokemon-PythonRed",
@@ -35,10 +36,23 @@ const json = {
 			"repo": "Celebi"
 		},
 	],
+	*/
 	"lang": [
+		{
+			"name": "anaconda",
+			"link": "https://www.anaconda.com/",
+		},
 		{
 			"name": "angularjs",
 			"link": "https://angular.io"
+		},
+		{
+			"name": "atom",
+			"link": "https://atom.io"
+		},
+		{
+			"name": "azure",
+			"link": "https://azure.microsoft.com"
 		},
 		{
 			"name": "bootstrap",
@@ -54,10 +68,6 @@ const json = {
 			"image": "https://res.cloudinary.com/cagatayc/image/upload/c_scale,w_500/v1493914344/bf.png"
 		},
 		{
-			"name": "c",
-			"link": "https://www.cprogramming.com/"
-		},
-		{
 			"name": "chrome",
 			"link": "https://www.google.com/intl/en_au/chrome/"
 		},
@@ -70,8 +80,21 @@ const json = {
 			"link": "https://www.w3schools.com/css/"
 		},
 		{
+			"name": "discordjs",
+			"link": "https://discord.js.org/"
+		},
+		{
+			"name": "django",
+			"link": "https://www.djangoproject.com/",
+			"image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+		},
+		{
 			"name": "dot-net",
 			"link": "https://dotnet.microsoft.com/"
+		},
+		{
+			"name": "flask",
+			"link": "https://flask.palletsprojects.com/"
 		},
 		{
 			"name": "git",
@@ -103,12 +126,30 @@ const json = {
 			"link": "https://www.markdownguide.org/"
 		},
 		{
+			"name": "mysql",
+			"link": "https://www.mysql.com/"
+		},
+		{
 			"name": "nodejs",
 			"link": "https://nodejs.org"
 		},
 		{
+			"name": "npm",
+			"link": "https://www.npmjs.com/",
+			"image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
+		},
+		{
+			"name": "nuget",
+			"link": "https://www.nuget.org/"
+		},
+		{
 			"name": "pandas",
 			"link": "https://pandas.pydata.org/"
+		},
+		{
+			"name": "photoshop",
+			"link": "https://www.adobe.com/products/photoshop.html",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/640px-Adobe_Photoshop_CC_icon.svg.png"
 		},
 		{
 			"name": "prado",
@@ -124,6 +165,10 @@ const json = {
 			"link": "https://sass-lang.com"
 		},
 		{
+			"name": "sourcetree",
+			"link": "https://www.sourcetreeapp.com/"
+		},
+		{
 			"name": "sqlite",
 			"link": "https://www.sqlite.org/"
 		},
@@ -132,8 +177,26 @@ const json = {
 			"link": "https://developer.apple.com/swift/"
 		},
 		{
+			"name": "tortoisegit",
+			"link": "https://tortoisegit.org/"
+		},
+		{
+			"name": "visualstudio",
+			"link": "https://www.visualstudio.com/",
+			"image": "https://static.wikia.nocookie.net/logopedia/images/6/62/Brand_Visual_Studio_Win_2019.svg/revision/latest/scale-to-width-down/250?cb=20191019024151"
+		},
+		{
 			"name": "vscode",
 			"link": "https://code.visualstudio.com/"
+		},
+		{
+			"name": "vscodeinsiders",
+			"link": "https://code.visualstudio.com/insiders",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Visual_Studio_Code_Insiders_1.36_icon.svg/1200px-Visual_Studio_Code_Insiders_1.36_icon.svg.png"
+		},
+		{
+			"name": "windows8",
+			"link": "https://www.microsoft.com/en-us/windows"
 		},
 		{
 			"name": "yaml",
@@ -147,6 +210,18 @@ const json = {
 			"label": "GitHub"
 		},
 		{
+			"link": "https://open.spotify.com/user/31hjsk6wmtjbwgdup3t4wmz7f7hy",
+			"label": "Spotify"
+		},
+		{
+			"link": "https://gdbrowser.com/u/TurnipGuy30",
+			"label": "Geometry Dash"
+		},
+		{
+			"link": "https://osu.ppy.sh/users/27934898",
+			"label": "osu!"
+		},
+		{
 			"link": "https://www.khanacademy.org/profile/TurnipGuy30",
 			"label": "Khan Academy"
 		},
@@ -155,14 +230,11 @@ const json = {
 			"label": "StackExchange"
 		},
 		{
-			"link": "https://gdbrowser.com/u/TurnipGuy30",
-			"label": "Geometry Dash"
-		},
-		{
 			"link": "https://turnipguy30.github.io/DT",
 			"label": "My Projects"
 		}
 	],
+	/*
 	"stat": [
 		{
 			"name": "trophies",
@@ -173,6 +245,7 @@ const json = {
 			"image": "https://github-readme-stats.vercel.app/api/top-langs?username=turnipguy30&show_icons=true&locale=en&layout=compact&theme=tokyonight&langs_count=10&custom_title=Most%20Used%20Languages%20%28Complete%29"
 		}
 	]
+	*/
 }
 window.onload = function () {
 	for (let i = 0; i < json.nav.length; i++) {
@@ -188,9 +261,12 @@ window.onload = function () {
 			document.getElementById("lang").innerHTML += `<a href="${json.lang[i].link}" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${json.lang[i].name}/${json.lang[i].name}-original.svg" alt="${json.lang[i].name}" width="40" height="40"></a><!--${json.lang[i].name}-->\n`
 		}
 	}
+	/*
 	for (let i = 0; i < json.stat.length; i++) {
 		document.getElementById("stat").innerHTML += `<img id="${json.stat[i].name}" src="${json.stat[i].image}" alt="${json.stat[i].name}">\n`
 	}
+	*/
+	/*
 	for (let i = 0; i < json.card.length; i++) {
 		if (json.card[i].owner) {
 			if (json.card[i].owner === json.card[i].repo) {
@@ -202,4 +278,5 @@ window.onload = function () {
 			document.getElementById("card").innerHTML += `<a href="https://github.com/TurnipGuy30/${json.card[i].repo}" target="_blank" rel="noopener noreferrer"><img alt="TurnipGuy30/${json.card[i].repo}" src="https://github-readme-stats.vercel.app/api/pin/?username=TurnipGuy30&repo=${json.card[i].repo}&theme=tokyonight&show_owner=false" width="400" height="150"></a>\n`
 		}
 	}
+	*/
 }
