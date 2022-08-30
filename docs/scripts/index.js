@@ -226,8 +226,8 @@ const json = {
 			"label": "Khan Academy"
 		},
 		{
-			"link": "https://stackexchange.com/users/21928188/turnipguy30",
-			"label": "StackExchange"
+			"link": "https://stackoverflow.com/users/16210754/turnipguy30",
+			"label": "StackOverflow"
 		},
 		{
 			"link": "https://turnipguy30.github.io/DT",
@@ -248,6 +248,20 @@ const json = {
 	*/
 }
 window.onload = function () {
+	document.getElementById("box").innerHTML = `
+		<h1 id="title"><code>✨</code> Hi, I'm JohnnySD! <code>✨</code></h1>
+		<p id="badge"></p>
+		<h3>Are you a programmer? Ask me for help with:</h3>
+		<p id="lang"></p>
+		<p>(Ping me on GitHub with <code>@TurnipGuy30</code>)</p>
+		<!--
+		<h3>My Statistics:</h3>
+		<p id="stat"></p>
+		-->
+		<!--
+		<h3>Pinned Repositories:</h3>
+		<p id="card"></p>
+		-->`
 	for (let i = 0; i < json.nav.length; i++) {
 		document.getElementById("nav").innerHTML += `<li><a href="${json.nav[i].link}" target="_blank" rel="noopener noreferrer"><span>${json.nav[i].label}</span></a></li>`
 	}
