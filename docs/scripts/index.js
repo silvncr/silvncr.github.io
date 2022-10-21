@@ -204,6 +204,7 @@ const json = {
 			"image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Official_YAML_Logo.svg"
 		}
 	],
+	/*
 	"nav": [
 		{
 			"link": "https://github.com/TurnipGuy30",
@@ -234,6 +235,7 @@ const json = {
 			"label": "My Projects"
 		}
 	],
+	*/
 	/*
 	"stat": [
 		{
@@ -262,9 +264,11 @@ window.onload = function () {
 		<h3>Pinned Repositories:</h3>
 		<p id="card"></p>
 		-->`
+	/*
 	for (let i = 0; i < json.nav.length; i++) {
 		document.getElementById("nav").innerHTML += `<li><a href="${json.nav[i].link}" target="_blank" rel="noopener noreferrer"><span>${json.nav[i].label}</span></a></li>`
 	}
+	*/
 	for (let i = 0; i < json.badge.length; i++) {
 		document.getElementById("badge").innerHTML += `<a href="${json.badge[i].link}" target="_blank" rel="noopener noreferrer"><img src="${json.badge[i].image}" alt="${json.badge[i].name}"></a>\n`
 	}
