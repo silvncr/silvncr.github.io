@@ -1,0 +1,17 @@
+[
+	{
+		"name": "views",
+		"link": "https://github.com/TurnipGuy30",
+		"image": "https://gpvc.arturio.dev/TurnipGuy30"
+	},
+	{
+		"name": "stars",
+		"link": "https://github.com/TurnipGuy30/?tab=repositories",
+		"image": "https://img.shields.io/github/stars/TurnipGuy30"
+	},
+	{
+		"name": "wakatime",
+		"link": "https://wakatime.com/@580a86f3-d10f-4415-ac5c-b9a0b252a2fb",
+		"image": "https://wakatime.com/badge/user/580a86f3-d10f-4415-ac5c-b9a0b252a2fb.svg"
+	}
+]
