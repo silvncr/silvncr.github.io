@@ -1,262 +1,131 @@
-import badges from "../data/badges.json" assert { type: "json" };
-//import cards from "../data/cards.json" assert { type: "json" };
-import interests from "../data/interests.json" assert { type: "json" };
-//import langs from "../data/langs.json" assert { type: "json" };
-//import music from "../data/music.json" assert { type: "json" };
-import socials from "../data/socials.json" assert { type: "json" };
-//import stats from "../data/stats.json" assert { type: "json" };
-
 window.onload = () => {
-	// badges
-	const badgesboxes = document.getElementsByClassName("badges");
-	for (const element of badgesboxes) {
-		element.innerHTML = "<br>\n";
-		for (const item of badges) {
-			element.innerHTML += `<a href="${item['link']}">
-				<img src="${item['image']}">
-			</a><!--${item['name']}-->\n`;
-		}
-	}
-
-	/*
-	/ cards
-	const projects = document.getElementById("projects");
-	projects.innerHTML = "<br>\n";
-	for (const item of cards) {
-		let showowner
-		if (item[0] == item[1]) {
-			let showowner = "false";
+	let i = 1n,
+		x = 3n * 10n ** 1020n,
+		pi = x;
+	while (x > 0) {
+		x = (x * i) / ((i + 1n) * 4n),
+			pi += x / (i + 2n),
+			i += 2n;
+	};
+	pi_out = (pi / 10n ** 20n).toString().slice(1);
+	for (const [name, link] of [
+		["Discord", "https://discord.com/invite/kx5cVTWjEg"],
+		["GitHub", "https://github.com/silvncr"],
+		["Instagram", "https://instagram.com/silvncr"],
+		["Spotify", "https://open.spotify.com/artist/6XO0vKydOw2Zt9kI36Xtj7"],
+		["Twitch", "https://twitch.tv/silvncr"],
+		["YouTube", "https://youtube.com/@silvncr"],
+	]) {
+		document.querySelector(".screen-links").innerHTML += `<a href="${link}" class="${name.toLowerCase()}"><em class="icofont-${name.toLowerCase()}"></em></a><!--${name}-->\n`;
+	};
+	let keys_in = "",
+		pi_game_active = pi_game_prompt = false,
+		pi_game_counter = 0;
+	const change = (vars) => Object.entries(vars).forEach((v) => root.style.setProperty(v[0], v[1])),
+		colours = {
+			blue: {
+				"--primary-1": "33 150 255",
+				"--primary-2": "30 143 255",
+			},
+			cream: {
+				"--primary-1": "245 222 179",
+				"--primary-2": "255 255 160",
+			},
+			green: {
+				"--primary-1": "0 255 0",
+				"--primary-2": "8 230 30",
+			},
+			orange: {
+				"--primary-1": "255 165 0",
+				"--primary-2": "240 180 0",
+			},
+			pink: {
+				"--primary-1": "255 108 203",
+				"--primary-2": "255 182 193",
+			},
+			purple: {
+				"--primary-1": "135 0 255",
+				"--primary-2": "128 0 128",
+			},
+			red: {
+				"--primary-1": "255 0 0",
+				"--primary-2": "255 30 24",
+			},
+			yellow: {
+				"--primary-1": "255 255 0",
+				"--primary-2": "240 240 0",
+			},
+		},
+		root = document.querySelector(":root"),
+		link = document.querySelector(".link"),
+		link_text = link.innerHTML;
+	change(colours.blue);
+	window.addEventListener("keypress", function (event) {
+		key = event.key.toLowerCase(),
+			keys_in += key;
+		if (pi_game_prompt) {
+			if (key == '.') {
+				pi_game_active = true,
+					pi_game_prompt = false;
+				link.innerHTML = pi_game_counter;
+			} else {
+				pi_game_prompt = false,
+					link.innerHTML = link_text;
+			};
+		} else if (pi_game_active) {
+			link.innerHTML = pi_game_counter;
+			if (key == pi_out[pi_game_counter]) {
+				pi_game_counter += 1;
+				link.innerHTML = pi_game_counter;
+			} else if ("0123456789".includes(key)) {
+				link.innerHTML = `you scored: ${pi_game_counter}`,
+					pi_game_active = pi_game_prompt = false,
+					pi_game_counter = 0;
+			};
 		} else {
-			let showowner = "true";
-		}
-		projects.innerHTML += `<a href="https://github.com/${item[0]}/${item[1]}" target="_blank" rel="noopener noreferrer"><img alt="${item[0]}/${item[1]}" src="https://github-readme-stats.vercel.app/api/pin/?username=${item[0]}&repo=${item[1]}&theme=tokyonight&show_owner=${showowner}" class="cards"></a>\n`
-	} */
-	// interests
-	const interestsbox = document.getElementById("interests-box");
-	interestsbox.innerHTML = "\n";
-	let classes = "";
-	let counter = 0;
-	for (const item of interests) {
-		if (counter == 0) {
-			classes = "col-lg-3 col-md-4";
-		} else if (counter == 1) {
-			classes = "col-lg-3 col-md-4 mt-4 mt-md-0";
-		} else if (counter == 2) {
-			classes = "col-lg-3 col-md-4 mt-4 mt-md-0";
-		} else if (counter == 3) {
-			classes = "col-lg-3 col-md-4 mt-4 mt-lg-0";
-		} else {
-			classes = "col-lg-3 col-md-4 mt-4";
-		}
-		interestsbox.innerHTML += `<div class="${classes}">
-			<div class="icon-box">
-				<h3>${item}</h3>
-			</div>
-		</div>\n`;
-		counter++;
-	}
-
-	// langs
-	// socials
-	const socialboxes = document.getElementsByClassName("social-links");
-	for (const element of socialboxes) {
-		element.innerHTML = "<br>\n";
-		for (const item of socials) {
-			if (item.length == 2) {
-				element.innerHTML += `<a href="${item[1]}" class="${item[0].toLowerCase()}">
-					<em class="icofont-${item[0].toLowerCase()}"></em>
-				</a><!--${item[0]}-->\n`;
-			}
-		}
-	}
-
-	// stats
-};
-
-document.getElementById("age").innerHTML = Math.abs(
-	new Date(Date.now() - new Date(2006, 20, 12).getTime()).getUTCFullYear() -
-		1969
-);
-
-!(($) => {
-	"use strict";
-
-	// Nav Menu
-	$(document).on("click", ".nav-menu a, .mobile-nav a", function (e) {
-		if (location.pathname.replace(/^\//, "") ==
-			this.pathname.replace(/^\//, "") &&
-			location.hostname == this.hostname) {
-			let hash = this.hash;
-			let target = $(hash);
-			if (target.length) {
-				e.preventDefault();
-
-				if ($(this).parents(".nav-menu, .mobile-nav").length) {
-					$(".nav-menu .active, .mobile-nav .active").removeClass("active");
-					$(this).closest("li").addClass("active");
-				}
-
-				if (hash == "#header") {
-					$("#header").removeClass("header-top");
-					$("section").removeClass("section-show");
-					if ($("body").hasClass("mobile-nav-active")) {
-						$("body").removeClass("mobile-nav-active");
-						$(".mobile-nav-toggle i").toggleClass(
-							"icofont-navigation-menu icofont-close"
-						);
-						$(".mobile-nav-overly").fadeOut();
-					}
-					return;
-				}
-
-				if (!$("#header").hasClass("header-top")) {
-					$("#header").addClass("header-top");
-					setTimeout(function () {
-						$("section").removeClass("section-show");
-						$(hash).addClass("section-show");
-					}, 350);
-				} else {
-					$("section").removeClass("section-show");
-					$(hash).addClass("section-show");
-				}
-
-				$("html, body").animate(
-					{
-						scrollTop: 0,
-					},
-					350
-				);
-
-				if ($("body").hasClass("mobile-nav-active")) {
-					$("body").removeClass("mobile-nav-active");
-					$(".mobile-nav-toggle i").toggleClass(
-						"icofont-navigation-menu icofont-close"
-					);
-					$(".mobile-nav-overly").fadeOut();
-				}
-
-				return false;
-			}
-		}
+			pi_game_active = pi_game_prompt = false,
+				link.innerHTML = link_text;
+			if (keys_in.endsWith("3")) {
+				pi_game_prompt = true,
+					link.innerHTML = "press . to play";
+			} else {
+				for (const [key, val] of Object.entries(colours)) {
+					if (keys_in.endsWith(key)) {
+						change(val);
+					};
+				};
+			};
+		};
 	});
-
-	// Activate/show sections on load with hash links
-	if (window.location.hash) {
-		let initial_nav = window.location.hash;
-		if ($(initial_nav).length) {
-			$("#header").addClass("header-top");
-			$(".nav-menu .active, .mobile-nav .active").removeClass("active");
-			$(".nav-menu, .mobile-nav")
-				.find('a[href="' + initial_nav + '"]')
-				.parent("li")
-				.addClass("active");
-			setTimeout(function () {
-				$("section").removeClass("section-show");
-				$(initial_nav).addClass("section-show");
-			}, 350);
-		}
-	}
-
-	// Mobile Navigation
-	if ($(".nav-menu").length) {
-		let $mobile_nav = $(".nav-menu").clone().prop({
-			class: "mobile-nav d-lg-none",
-		});
-		$("body").append($mobile_nav);
-		$("body").prepend(
-			'<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>'
+	window.onpointermove = (event) => {
+		const { clientX, clientY } = event;
+		document.getElementById("blob").animate(
+			{
+				left: `${clientX}px`,
+				top: `${clientY}px`,
+			},
+			{ duration: 3000, fill: "forwards" }
 		);
-		$("body").append('<div class="mobile-nav-overly"></div>');
-
-		$(document).on("click", ".mobile-nav-toggle", function (e) {
-			$("body").toggleClass("mobile-nav-active");
-			$(".mobile-nav-toggle i").toggleClass(
-				"icofont-navigation-menu icofont-close"
-			);
-			$(".mobile-nav-overly").toggle();
-		});
-
-		$(document).click(function (e) {
-			let container = $(".mobile-nav, .mobile-nav-toggle");
-			if (!container.is(e.target) && container.has(e.target).length === 0) {
-				if ($("body").hasClass("mobile-nav-active")) {
-					$("body").removeClass("mobile-nav-active");
-					$(".mobile-nav-toggle i").toggleClass(
-						"icofont-navigation-menu icofont-close"
-					);
-					$(".mobile-nav-overly").fadeOut();
-				}
-			}
-		});
-	} else if ($(".mobile-nav, .mobile-nav-toggle").length) {
-		$(".mobile-nav, .mobile-nav-toggle").hide();
-	}
-
-	// jQuery counterUp
-	$('[data-toggle="counter-up"]').counterUp({
-		delay: 10,
-		time: 1000,
-	});
-
-	// Skills section
-	$(".skills-content").waypoint(
-		function () {
-			$(".progress .progress-bar").each(function () {
-				$(this).css("width", $(this).attr("aria-valuenow") + "%");
-			});
-		},
-		{
-			offset: "80%",
-		}
-	);
-
-	// Testimonials carousel (uses the Owl Carousel library)
-	$(".testimonials-carousel").owlCarousel({
-		autoplay: true,
-		dots: true,
-		loop: true,
-		responsive: {
-			0: {
-				items: 1,
-			},
-			768: {
-				items: 2,
-			},
-			900: {
-				items: 3,
-			},
-		},
-	});
-
-	// Porfolio isotope and filter
-	$(window).on("load", function () {
-		let portfolioIsotope = $(".portfolio-container").isotope({
-			itemSelector: ".portfolio-item",
-			layoutMode: "fitRows",
-		});
-
-		$("#portfolio-flters li").on("click", function () {
-			$("#portfolio-flters li").removeClass("filter-active");
-			$(this).addClass("filter-active");
-
-			portfolioIsotope.isotope({
-				filter: $(this).data("filter"),
-			});
-		});
-	});
-
-	// Initiate venobox (lightbox feature used in portofilo)
-	$(document).ready(function () {
-		$(".venobox").venobox({
-			share: false,
-		});
-	});
-
-	// Portfolio details carousel
-	$(".portfolio-details-carousel").owlCarousel({
-		autoplay: true,
-		dots: true,
-		loop: true,
-		items: 1,
-	});
-})(jQuery);
+	};
+	let interval = null;
+	const name = document.querySelector(".name");
+	document.querySelector(".screen").onmouseenter = (event) => {
+		let iteration = 0;
+		clearInterval(interval);
+		interval = setInterval(() => {
+			name.innerText = name.innerText
+				.split("")
+				.map((letter, index) => {
+					if (index < iteration) {
+						return name.dataset.value[index];
+					};
+					return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)];
+				})
+				.join("");
+			if (iteration >= name.dataset.value.length) {
+				clearInterval(interval);
+			};
+			iteration += 1 / 3;
+		}, 30);
+	};
+};
