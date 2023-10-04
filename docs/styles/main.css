@@ -1,5 +1,5 @@
 :root {
-	--background: rgb(29 30 34);
+	--background: 29 30 34;
 	--primary-1: auto;
 	--primary-2: auto;
 }
@@ -12,7 +12,7 @@ body {
 	height: 100vh;
 	display: grid;
 	place-items: center;
-	background-color: var(--background);
+	background-color: rgb(var(--background));
 	margin: 0rem;
 	overflow: hidden;
 }
@@ -287,7 +287,6 @@ body {
 }
 
 #blob {
-	background-color: white;
 	height: 34vmax;
 	aspect-ratio: 1;
 	position: absolute;
