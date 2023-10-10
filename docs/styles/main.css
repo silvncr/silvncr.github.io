@@ -25,7 +25,7 @@ body {
 	border-radius: 1rem;
 	background-color: rgb(var(--primary-1) / 15%);
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 	z-index: 10;
 }
 
