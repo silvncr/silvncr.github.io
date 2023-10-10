@@ -27,6 +27,11 @@ window.onload = () => {
 	let pi_game_counter = 0;
 	const change = (vars) =>
 		Object.entries(vars).forEach((v) => root.style.setProperty(v[0], v[1]));
+	const link_span = (text) => {
+		return text
+			.replace(/\[/g, `<span class="link-span">`)
+			.replace(/\]/g, "</span>");
+	};
 	const alpha = "abcdefghijklmnopqrstuvwxyz";
 	const nums = "0123456789";
 	const colours = {
@@ -76,17 +81,9 @@ window.onload = () => {
 	let link_text_old = link.innerHTML;
 	let link_text = link_text_old;
 	let click_order = "";
+	let vault_active = false;
 	let vault_in = "";
-	let vault = {
-		0: {
-			active: true,
-			solved: false,
-		},
-		1: {
-			active: false,
-			solved: false,
-		},
-	};
+	let found_match_iter = false;
 	change(colours.cyan);
 	window.addEventListener("keydown", (event) => {
 		let key = event.key.toLowerCase();
@@ -94,23 +91,35 @@ window.onload = () => {
 			alpha.concat(nums).concat([" ", ".", "backspace", "enter"]).includes(key)
 		) {
 			keys_in += key;
-			if (vault[1].active) {
+			if (vault_active) {
 				if (key == "enter") {
-					if (vault_in.toLowerCase() == "ptfu1yi35") {
-						vault[1].solved = true;
-						vault[1].active = false;
-						vault[0].active = true;
-						link_text = "welcome back, silvncr";
-						vault_in = "";
+					if (["b", "back", "e", "end", "q", "quit"].includes(vault_in)) {
+						vault_active = false;
+						link_text = link_text_old;
+						link.innerHTML = link_text;
+					} else {
+						found_match_iter = false;
+						for (const [k, v] of Object.entries({})) {
+							let k_iter = k.replace(/_/g, " ");
+							if (vault_in == k_iter.toLowerCase()) {
+								link.innerHTML = link_span(v);
+								found_match_iter = true;
+							}
+						}
+						if (vault_in && !found_match_iter) {
+							link.innerHTML = "invalid password";
+						}
 					}
+					found_match_iter = false;
 					vault_in = "";
-					link.innerHTML = link_text;
-				} else if (key == "backspace") {
-					vault_in = vault_in.slice(0, -1);
-				} else if (vault_in.length <= 15) {
-					vault_in += key;
+				} else {
+					if (key == "backspace") {
+						vault_in = vault_in.slice(0, -1);
+					} else if (vault_in.length <= 15) {
+						vault_in += key;
+					}
+					link.innerHTML = vault_in || link_text;
 				}
-				link.innerHTML = vault_in || link_text;
 			} else if (pi_game_prompt) {
 				if (key == ".") {
 					pi_game_active = true;
@@ -155,12 +164,10 @@ window.onload = () => {
 	link_span_click = (num) => {
 		click_order += num.toString();
 		if (click_order.endsWith("3124")) {
+			vault_active = true;
 			click_order = "";
-			link_text = "please enter the password";
+			link_text = "welcome to the vault";
 			link.innerHTML = link_text;
-			vault[0].solved = true;
-			vault[0].active = false;
-			vault[1].active = true;
 		}
 	};
 	link_span_click("");
