@@ -92,7 +92,7 @@ window.addEventListener("keydown", (event) => {
 		keys_in += key;
 		if (vault_active) {
 			if (key == "enter") {
-				if (["b", "back", "e", "end", "q", "quit"].includes(vault_in)) {
+				if (["b", "back", "e", "end", "exit", "q", "quit"].includes(vault_in)) {
 					vault_active = false;
 					link_text = link_text_old;
 					link.innerHTML = link_text;
