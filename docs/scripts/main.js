@@ -31,8 +31,8 @@ const link_span = (text) => {
 		.replace(/\[/g, `<span class="link-span">`)
 		.replace(/\]/g, "</span>");
 };
-const alpha = "abcdefghijklmnopqrstuvwxyz";
-const nums = "0123456789";
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const numbers = "0123456789";
 const colours = {
 	blue: {
 		"--primary-1": "33 150 255",
@@ -87,7 +87,7 @@ change(colours.cyan);
 window.addEventListener("keydown", (event) => {
 	let key = event.key.toLowerCase();
 	if (
-		alpha.concat(nums).concat([" ", ".", "backspace", "enter"]).includes(key)
+		alphabet.concat(numbers).concat([" ", ".", "backspace", "enter"]).includes(key)
 	) {
 		keys_in += key;
 		if (vault_active) {
@@ -99,10 +99,8 @@ window.addEventListener("keydown", (event) => {
 				} else {
 					found_match_iter = false;
 					for (const [k, v] of Object.entries(messages)) {
-						if (vault_in == k
-							.replace(/_/g, " ")
-							.replace(/\$/g, ",")
-							.toLowerCase()
+						if (
+							vault_in == k.replace(/_/g, " ").replace(/\$/g, ",").toLowerCase()
 						) {
 							link.innerHTML = link_span(v);
 							found_match_iter = true;
@@ -142,7 +140,7 @@ window.addEventListener("keydown", (event) => {
 					pi_game_counter += 1;
 					link.innerHTML = pi_game_counter;
 				}
-			} else if (nums.includes(key)) {
+			} else if (numbers.includes(key)) {
 				link.innerHTML = `you scored: ${pi_game_counter}`;
 				pi_game_active = pi_game_prompt = false;
 				pi_game_counter = 0;
@@ -163,7 +161,7 @@ window.addEventListener("keydown", (event) => {
 		}
 	}
 });
-link_span_click = (num) => {
+const link_span_click = (num) => {
 	click_order += num.toString();
 	if (click_order.endsWith("3124")) {
 		vault_active = true;
@@ -187,21 +185,21 @@ window.onpointermove = (event) => {
 	);
 };
 let interval = null;
-const name = document.querySelector(".name");
+const name_element = document.querySelector(".name");
 document.querySelector(".screen").onmouseenter = (event) => {
 	let iteration = 0;
 	clearInterval(interval);
 	interval = setInterval(() => {
-		name.innerText = name.innerText
+		name_element.innerText = name_element.innerText
 			.split("")
 			.map((letter, index) => {
 				if (index < iteration) {
-					return name.dataset.value[index];
+					return name_element.dataset.value[index];
 				}
-				return alpha[Math.floor(Math.random() * 26)];
+				return alphabet[Math.floor(Math.random() * 26)];
 			})
 			.join("");
-		if (iteration >= name.dataset.value.length) {
+		if (iteration >= name_element.dataset.value.length) {
 			clearInterval(interval);
 		}
 		iteration += 1 / 3;
