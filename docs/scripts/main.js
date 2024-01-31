@@ -26,6 +26,15 @@ let pi_game_prompt = false;
 let pi_game_counter = 0;
 const change = (vars) =>
 	Object.entries(vars).forEach((v) => root.style.setProperty(v[0], v[1]));
+const download = (url, filename) => {
+	let a = document.createElement("a");
+	a.href = url;
+	a.download = filename;
+	a.style.display = "none";
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+};
 const link_span = (text) => {
 	return text
 		.replace(/\[/g, `<span class="link-span">`)
@@ -104,6 +113,12 @@ window.addEventListener("keydown", (event) => {
 						) {
 							link.innerHTML = link_span(v);
 							found_match_iter = true;
+							if (k == "suboptimal") {
+								download(
+									"258 - Mudkip - C6D800000000.pk8",
+									"258 - Mudkip - C6D800000000.pk8"
+								);
+							}
 						}
 					}
 					if (vault_in && !found_match_iter) {
