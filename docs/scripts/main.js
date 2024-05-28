@@ -26,7 +26,7 @@ for (const [name, link] of [
 }
 const change = (vars) =>
 	Object.entries(vars).forEach((v) => root.style.setProperty(v[0], v[1]));
-const download = (url, filename) => {
+const download_file = (url, filename) => {
 	let a = document.createElement('a');
 	a.href = url;
 	a.download = filename;
@@ -128,22 +128,15 @@ window.addEventListener('keydown', (event) => {
 		keys_in += key;
 		if (vault_active) {
 			if (key == 'enter') {
-				if (
-					['b', 'back', 'e', 'end', 'exit', 'q', 'quit']
-						.includes(vault_in)
-				) {
+				if (['b', 'back', 'e', 'end', 'exit', 'q', 'quit'].includes(vault_in)) {
 					vault_active = false;
 					link_text = link_text_old;
 					link.innerHTML = link_text;
 				} else {
 					found_match = false;
 					for (const [k, m] of Object.entries(messages)) {
-						let vault_iter = vault_in
-							.replace(/,/g, '')
-							.toLocaleLowerCase();
-						let k_iter = k
-							.replace(/_/g, ' ')
-							.toLocaleLowerCase();
+						let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
+						let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
 						if (vault_iter == k_iter) {
 							found_match = true;
 							link.innerHTML = link_span(m);
@@ -151,12 +144,8 @@ window.addEventListener('keydown', (event) => {
 					}
 					for (const [k, t] of Object.entries(trophies)) {
 						if (!found_match) {
-							let vault_iter = vault_in
-								.replace(/,/g, '')
-								.toLocaleLowerCase();
-							let k_iter = k
-								.replace(/_/g, ' ')
-								.toLocaleLowerCase();
+							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
+							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
 							if (vault_iter == k_iter) {
 								found_match = true;
 								if (!any_trophies) {
@@ -216,9 +205,9 @@ window.addEventListener('keydown', (event) => {
 				pi_game_prompt = true;
 				link.innerHTML = 'press . to play';
 			} else {
-				for (const [key, val] of Object.entries(colours)) {
-					if (keys_in.endsWith(key)) {
-						change(val);
+				for (const [k, v] of Object.entries(colours)) {
+					if (keys_in.endsWith(k)) {
+						change(v);
 					}
 				}
 			}

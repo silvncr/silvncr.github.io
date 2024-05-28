@@ -180,10 +180,8 @@
 
 #footer {
 	bottom: 0;
-	color: white;
-	font-family: "Source Code Pro", "Courier New", Courier, monospace;
 	position: absolute;
-	text-align: right !important;
+	text-transform: lowercase !important;
 	z-index: 1000;
 }
 
@@ -364,7 +362,8 @@ body {
 	width: auto;
 }
 
-.screen>.screen-content>.screen-user>:is(.name, .link) {
+#footer,
+.screen>.screen-content>.screen-user {
 	font-family: "Source Code Pro", "Courier New", Courier, monospace;
 	color: white;
 	text-align: center;
@@ -372,7 +371,8 @@ body {
 }
 
 .screen>.screen-image {
-	background-image: url("../images/846-2000x3000.jpg"); /* https://picsum.photos/2000/1500.jpg */
+	background-image: url("../images/846-2000x3000.jpg");
+	/* https://picsum.photos/2000/1500.jpg */
 	height: 100%;
 	width: 100%;
 	position: absolute;
