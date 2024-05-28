@@ -1,3 +1,13 @@
+@-webkit-keyframes pan-overlay {
+	from {
+		background-position: 0% 0%;
+	}
+
+	to {
+		background-position: 0% -100%;
+	}
+}
+
 @keyframes pan-overlay {
 	from {
 		background-position: 0% 0%;
@@ -5,6 +15,58 @@
 
 	to {
 		background-position: 0% -100%;
+	}
+}
+
+@-webkit-keyframes pan-image {
+	0% {
+		background-position: 36% 42%;
+		background-size: 200%;
+	}
+
+	20% {
+		background-position: 30% 35%;
+		background-size: 200%;
+	}
+
+	20.0001% {
+		background-position: 60% 85%;
+		background-size: 500%;
+	}
+
+	40% {
+		background-position: 49% 81%;
+		background-size: 500%;
+	}
+
+	40.0001% {
+		background-position: 80% 42%;
+		background-size: 300%;
+	}
+
+	60% {
+		background-position: 84% 33%;
+		background-size: 300%;
+	}
+
+	60.0001% {
+		background-position: 0% 0%;
+		background-size: 300%;
+	}
+
+	80% {
+		background-position: 15% 4%;
+		background-size: 300%;
+	}
+
+	80.0001% {
+		background-position: 80% 10%;
+		background-size: 300%;
+	}
+
+	100% {
+		background-position: 72% 14%;
+		background-size: 300%;
 	}
 }
 
@@ -60,6 +122,20 @@
 	}
 }
 
+@-webkit-keyframes rotate {
+	from {
+		rotate: 0deg;
+	}
+
+	50% {
+		scale: 1 1.5;
+	}
+
+	to {
+		rotate: 360deg;
+	}
+}
+
 @keyframes rotate {
 	from {
 		rotate: 0deg;
@@ -76,6 +152,7 @@
 
 * {
 	box-sizing: border-box;
+	content: '\F0488';
 }
 
 #blob {
@@ -87,6 +164,7 @@
 	translate: -50% -50%;
 	border-radius: 50%;
 	background: linear-gradient(to right, rgb(var(--primary-1)), rgb(var(--primary-2)));
+	-webkit-animation: rotate 20s infinite;
 	animation: rotate 20s infinite;
 	opacity: 0.5;
 }
@@ -96,7 +174,17 @@
 	width: 100%;
 	position: absolute;
 	z-index: 2;
+	-webkit-backdrop-filter: blur(12vmax);
 	backdrop-filter: blur(12vmax);
+}
+
+#footer {
+	bottom: 0;
+	color: white;
+	font-family: "Source Code Pro", "Courier New", Courier, monospace;
+	position: absolute;
+	text-align: right !important;
+	z-index: 1000;
 }
 
 body {
@@ -128,15 +216,14 @@ body {
 }
 
 .screen-overlay {
-	background: linear-gradient(
-		rgb(var(--primary-1) / 0.15),
-		rgb(var(--primary-1) / 0.15) 3px,
-		transparent 3px,
-		transparent 9px
-	);
+	background: linear-gradient(rgb(var(--primary-1) / 0.15),
+			rgb(var(--primary-1) / 0.15) 3px,
+			transparent 3px,
+			transparent 9px);
 	background-size: 100% 9px;
 	height: 100%;
 	width: 100%;
+	-webkit-animation: pan-overlay 22s infinite linear;
 	animation: pan-overlay 22s infinite linear;
 	position: absolute;
 	z-index: 2;
@@ -151,7 +238,8 @@ body {
 	border-top-right-radius: 1rem;
 }
 
-.screen:after, .screen:before {
+.screen:after,
+.screen:before {
 	content: "";
 	height: 5px;
 	position: absolute;
@@ -210,7 +298,8 @@ body {
 	opacity: 0.75;
 }
 
-.screen>.screen-content>.screen-user:before, .screen>.screen-content>.screen-user:after {
+.screen>.screen-content>.screen-user:before,
+.screen>.screen-content>.screen-user:after {
 	content: "";
 	position: absolute;
 	top: 0px;
@@ -248,7 +337,8 @@ body {
 	right: -1.5rem;
 }
 
-.screen>.screen-content>.screen-user>.name:before, .screen>.screen-content>.screen-user>.name:after {
+.screen>.screen-content>.screen-user>.name:before,
+.screen>.screen-content>.screen-user>.name:after {
 	height: 4px;
 	width: 4px;
 	position: absolute;
@@ -275,14 +365,14 @@ body {
 }
 
 .screen>.screen-content>.screen-user>:is(.name, .link) {
-	font-family: "Source Code Pro", monospace;
+	font-family: "Source Code Pro", "Courier New", Courier, monospace;
 	color: white;
 	text-align: center;
 	text-transform: uppercase;
 }
 
 .screen>.screen-image {
-	background-image: url("https://images.unsplash.com/photo-1515266591878-f93e32bc5937?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80");
+	background-image: url("../images/846-2000x3000.jpg"); /* https://picsum.photos/2000/1500.jpg */
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -291,8 +381,10 @@ body {
 	top: 0px;
 	background-size: 300%;
 	background-position: 0% 0%;
+	-webkit-filter: sepia(100%) hue-rotate(160deg);
 	filter: sepia(100%) hue-rotate(160deg);
 	opacity: 0.6;
+	-webkit-animation: pan-image 15s linear infinite;
 	animation: pan-image 15s linear infinite;
 }
 
