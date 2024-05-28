@@ -179,10 +179,15 @@
 }
 
 #footer {
-	bottom: 0;
+	bottom: 1rem;
 	position: absolute;
 	text-transform: lowercase !important;
 	z-index: 1000;
+}
+
+#trophies,
+#info {
+	display: block;
 }
 
 body {
@@ -345,15 +350,6 @@ body {
 }
 
 .screen>.screen-content>.screen-user>.screen-links>a {
-	color: white;
-	display: inline;
-	font-size: 1.6rem;
-	text-decoration: none;
-	white-space: nowrap;
-	width: auto;
-}
-
-.screen>.screen-content>.screen-user>.screen-links>a:is(:hover, :focus) {
 	color: white;
 	display: inline;
 	font-size: 1.6rem;

@@ -7,22 +7,23 @@ while (x > 0) {
 	i += 2n;
 }
 const pi_out = (pi_calc / 10n ** 20n).toString().slice(1);
-document.getElementById('year').innerHTML = new Date().getFullYear();
+document.getElementById('year').innerHTML = `&nbsp;${new Date().getFullYear()}`;
 for (const [name, link] of [
 	['Discord', 'https://discord.com/invite/kx5cVTWjEg'],
 	['GitHub', 'https://github.com/silvncr'],
-	['Instagram', 'https://instagram.com/silvncr'],
 	['Spotify', 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo'],
 	['Twitch', 'https://twitch.tv/silvncr'],
-	['Twitter', 'https://twitter.com/@silvncr'],
 	['YouTube', 'https://youtube.com/@silvncr'],
 ]) {
-	document.querySelector('.screen-links').innerHTML += [
-		`<a href="${link}" target="_blank" rel="noopener noreferrer"`,
-		`class="${name.toLowerCase()}">`,
-		`<em class="icofont-${name.toLowerCase()}"></em></a>`,
-		`<!--${name}-->\n`,
-	].join(' ');
+	document.querySelector('.screen-links').innerHTML +=
+		'\n' +
+		[
+			`<a href="${link}" target="_blank" rel="noopener noreferrer"`,
+			`class="${name.toLowerCase()}">`,
+			`<em class="icofont-${name.toLowerCase()}"></em></a>`,
+			`<!--${name}-->`,
+		].join('\n') +
+		'\n';
 }
 const change = (vars) =>
 	Object.entries(vars).forEach((v) => root.style.setProperty(v[0], v[1]));
@@ -106,14 +107,15 @@ let vault_active = false;
 let vault_in = '';
 let found_match = false;
 let password_length = 20;
-let any_trophies = false;
 let frog = false;
+let showing_version = false;
+let tutorial_event = false;
 if (new Date().getDay == 20 && new Date().getMonth == 12) {
 	change({
 		'--primary-1': '255 255 255',
 		'--primary-2': '255 255 255',
 	});
-	document.getElementById('footer').innerHTML += '&nbsp;🎂';
+	document.getElementById('info').innerHTML += '&nbsp;🎂';
 } else {
 	change(colours.cyan);
 }
@@ -128,7 +130,21 @@ window.addEventListener('keydown', (event) => {
 		keys_in += key;
 		if (vault_active) {
 			if (key == 'enter') {
-				if (['b', 'back', 'e', 'end', 'exit', 'q', 'quit'].includes(vault_in)) {
+				if (
+					[
+						'b',
+						'back',
+						'e',
+						'end',
+						'exit',
+						'o',
+						'out',
+						'q',
+						'quit',
+						'wq',
+						'x',
+					].includes(vault_in)
+				) {
 					vault_active = false;
 					link_text = link_text_old;
 					link.innerHTML = link_text;
@@ -142,18 +158,27 @@ window.addEventListener('keydown', (event) => {
 							link.innerHTML = link_span(m);
 						}
 					}
-					for (const [k, t] of Object.entries(trophies)) {
+					for (const [k, t] of Object.entries(events)) {
 						if (!found_match) {
 							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
 							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
 							if (vault_iter == k_iter) {
 								found_match = true;
-								if (!any_trophies) {
-									document.getElementById('footer').innerHTML +=
-										'&nbsp;|&nbsp;';
-									any_trophies = true;
-								}
 								t();
+							}
+						}
+					}
+					for (const [k, v] of Object.entries(redirects)) {
+						if (!found_match) {
+							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
+							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
+							if (vault_iter == k_iter) {
+								found_match = true;
+								link.innerHTML = link_span(v[0]);
+								document.title = 'redirecting...';
+								setTimeout(() => {
+									window.location.href = v[1];
+								}, 1000);
 							}
 						}
 					}
@@ -214,8 +239,14 @@ window.addEventListener('keydown', (event) => {
 		}
 	}
 });
-const link_span_click = (num) => {
-	click_order += num.toString();
+const trophies_alert = () => {
+	if (document.getElementById('trophies').innerText.length > 0) {
+		link.innerHTML = 'These are your trophies! How many can you find?&nbsp;'
+			+ '<span onclick="tutorial()">🏆</span>';
+	}
+};
+const link_span_click = (n) => {
+	click_order += n.toString();
 	if (click_order.endsWith('3124')) {
 		vault_active = true;
 		click_order = '';
@@ -239,14 +270,14 @@ window.onpointermove = (event) => {
 };
 let interval = null;
 const name_element = document.querySelector('.name');
-document.querySelector('.screen').onmouseenter = (event) => {
+document.querySelector('.screen').onmouseenter = (_) => {
 	let iteration = 0;
 	clearInterval(interval);
 	interval = setInterval(() => {
 		if (name_element && name_element.innerText) {
 			name_element.innerText = name_element.innerText
 				.split('')
-				.map((letter, index) => {
+				.map((_, index) => {
 					if (index < iteration) {
 						return name_element.dataset.value[index];
 					}
