@@ -222,7 +222,7 @@ document.addEventListener('readystatechange', () => {
 });
 
 let i = 1n;
-let x = 3n * 10n ** 1020n;
+let x = 3n * 10n ** 120n;
 let pi_calc = x;
 while (x > 0) {
 	x = (x * i) / ((i + 1n) * 4n);
