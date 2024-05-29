@@ -251,16 +251,6 @@ const link_span = (text) => {
 		.replace(/\]/g, '</span>');
 };
 
-const strip = (str, remove) => {
-	while (str.length > 0 && remove.indexOf(str.charAt(0)) != -1) {
-		str = str.substr(1);
-	}
-	while (str.length > 0 && remove.indexOf(str.charAt(str.length - 1)) != -1) {
-		str = str.substr(0, str.length - 1);
-	}
-	return str;
-};
-
 const colours = {
 	blue: {
 		'--primary-1': '33 150 255',
@@ -307,20 +297,24 @@ const colours = {
 const root = document.querySelector(':root');
 const link = document.querySelector('.link');
 
-let keys_in = '';
-let pi_game_active = false;
 let pi_game_prompt = false;
+let pi_game_active = false;
 let pi_game_counter = 0;
+
 let link_text_old = link.innerHTML;
 let link_text = link_text_old;
+
 let click_order = '';
 let vault_active = false;
+
+let keys_in = '';
 let vault_in = '';
 let found_match = false;
 let password_length = 20;
-let frog = false;
+
 let showing_version = false;
 let tutorial_event = false;
+let frog = false;
 
 window.addEventListener('keydown', (event) => {
 	let key = event.key.toLowerCase();
@@ -355,8 +349,11 @@ window.addEventListener('keydown', (event) => {
 					found_match = false;
 					for (const [k, m] of Object.entries(messages)) {
 						if (!found_match) {
-							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
-							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
+							let vault_iter = vault_in
+								.replace(/,/g, '')
+								.toLocaleLowerCase()
+								.trim();
+							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase().trim();
 							if (vault_iter == k_iter) {
 								found_match = true;
 								link.innerHTML = link_span(m);
@@ -365,8 +362,11 @@ window.addEventListener('keydown', (event) => {
 					}
 					for (const [k, t] of Object.entries(events)) {
 						if (!found_match) {
-							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
-							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
+							let vault_iter = vault_in
+								.replace(/,/g, '')
+								.toLocaleLowerCase()
+								.trim();
+							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase().trim();
 							if (vault_iter == k_iter) {
 								found_match = true;
 								t();
@@ -375,8 +375,11 @@ window.addEventListener('keydown', (event) => {
 					}
 					for (const [k, v] of Object.entries(redirects)) {
 						if (!found_match) {
-							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
-							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
+							let vault_iter = vault_in
+								.replace(/,/g, '')
+								.toLocaleLowerCase()
+								.trim();
+							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase().trim();
 							if (vault_iter == k_iter) {
 								found_match = true;
 								link.innerHTML = link_span(v[0]);
@@ -397,7 +400,7 @@ window.addEventListener('keydown', (event) => {
 				if (key == 'backspace') {
 					vault_in = vault_in.slice(0, -1);
 				} else if (vault_in.length < password_length) {
-					if (!['.', ','].includes(key)) {
+					if (!['.', ','].includes(key) && (vault_in + key).trim()) {
 						vault_in += key;
 					}
 				}
