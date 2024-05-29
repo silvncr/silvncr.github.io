@@ -3,7 +3,6 @@
 WARNING: this file contains puzzle answers and other spoilers!
 
 	Animations and effects are in `main.js`.
-	It's fine to look at those for the most part.
 
 */
 
@@ -124,19 +123,27 @@ const trophies_list = [
 	'✨',
 	'🎀',
 ];
-let obtained = [];
+let obtained = read_cookie('trophies')
+	? read_cookie('trophies').split(',')
+	: [];
 
 const refresh_trophies = () => {
 	document.getElementById('trophies').innerHTML = trophies_list
-		.filter(_t => obtained.includes(_t))
-		.map(_t => `<span class="trophy" onclick="trophies_alert()">${_t}</span>`)
+		.filter((_t) => obtained.includes(_t))
+		.map((_t) => `<span class="trophy" onclick="trophies_alert()">${_t}</span>`)
 		.join('');
+	write_cookie('trophies', obtained.join(','));
 };
 
 const trophy = (t) => {
 	if (trophies_list.includes(t) && !obtained.includes(t)) {
 		obtained.push(t);
 	}
+	refresh_trophies();
+};
+
+const reset_trophies = () => {
+	obtained = [];
 	refresh_trophies();
 };
 
@@ -167,5 +174,14 @@ const call_pi = () => {
 document.addEventListener('readystatechange', () => {
 	if (document.readyState == 'complete') {
 		refresh_trophies();
+		if (obtained.includes('🏆')) {
+			tutorial_event = true;
+		}
+		if (obtained.includes('🔓')) {
+			password_length = 21;
+		}
+		if (obtained.includes('🐸')) {
+			frog = true;
+		}
 	}
 });
