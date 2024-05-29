@@ -9,8 +9,8 @@
 }
 
 @font-face {
-	font-family: "Source Code Pro";
-	src: url("../fonts/SourceCodePro-Regular.ttf");
+	font-family: 'Source Code Pro';
+	src: url('../fonts/SourceCodePro-Regular.ttf');
 }
 
 @keyframes pan-overlay {
@@ -168,7 +168,11 @@
 	top: 50%;
 	translate: -50% -50%;
 	border-radius: 50%;
-	background: linear-gradient(to right, rgb(var(--primary-1)), rgb(var(--primary-2)));
+	background: linear-gradient(
+		to right,
+		rgb(var(--primary-1)),
+		rgb(var(--primary-2))
+	);
 	-webkit-animation: rotate 20s infinite;
 	animation: rotate 20s infinite;
 	opacity: 0.5;
@@ -228,10 +232,12 @@ body {
 }
 
 .screen-overlay {
-	background: linear-gradient(rgb(var(--primary-1) / 0.15),
-			rgb(var(--primary-1) / 0.15) 3px,
-			transparent 3px,
-			transparent 9px);
+	background: linear-gradient(
+		rgb(var(--primary-1) / 0.15),
+		rgb(var(--primary-1) / 0.15) 3px,
+		transparent 3px,
+		transparent 9px
+	);
 	background-size: 100% 9px;
 	height: 100%;
 	width: 100%;
@@ -252,7 +258,7 @@ body {
 
 .screen:after,
 .screen:before {
-	content: "";
+	content: '';
 	height: 5px;
 	position: absolute;
 	z-index: 4;
@@ -268,7 +274,7 @@ body {
 	border-bottom-right-radius: 1rem;
 }
 
-.screen>.screen-content {
+.screen > .screen-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -283,13 +289,13 @@ body {
 	border-radius: 0.6rem;
 }
 
-.screen>.screen-content>.screen-icon {
+.screen > .screen-content > .screen-icon {
 	color: white;
 	font-size: 4rem;
 	text-shadow: 0px 0px 0.5rem white;
 }
 
-.screen>.screen-content>.screen-user {
+.screen > .screen-content > .screen-user {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -297,22 +303,22 @@ body {
 	position: relative;
 }
 
-.screen>.screen-content>.screen-user:after {
+.screen > .screen-content > .screen-user:after {
 	height: 3px;
 	width: 30px;
 	translate: 26px calc(-1rem - 0.5px);
 }
 
-.screen>.screen-content>.screen-user:before {
+.screen > .screen-content > .screen-user:before {
 	height: 2px;
 	width: 50px;
 	translate: -20px -1rem;
 	opacity: 0.75;
 }
 
-.screen>.screen-content>.screen-user:before,
-.screen>.screen-content>.screen-user:after {
-	content: "";
+.screen > .screen-content > .screen-user:before,
+.screen > .screen-content > .screen-user:after {
+	content: '';
 	position: absolute;
 	top: 0px;
 	background-color: rgb(var(--primary-1));
@@ -320,7 +326,7 @@ body {
 	box-shadow: 0px 0px 8px 3px rgb(var(--primary-1) / 60%);
 }
 
-.screen>.screen-content>.screen-user>.link {
+.screen > .screen-content > .screen-user > .link {
 	opacity: 0.8;
 	font-size: 1rem;
 	text-shadow: 0px 0px 0.5rem white;
@@ -329,28 +335,32 @@ body {
 	text-decoration: none;
 }
 
-.screen>.screen-content>.screen-user>.link>.link-span:is(:hover, :focus) {
+.screen
+	> .screen-content
+	> .screen-user
+	> .link
+	> .link-span:is(:hover, :focus) {
 	text-decoration: underline;
 }
 
-.screen>.screen-content>.screen-user>.name {
+.screen > .screen-content > .screen-user > .name {
 	position: relative;
 	font-size: 3rem;
 	font-weight: 400;
 }
 
-.screen>.screen-content>.screen-user>.name:after {
+.screen > .screen-content > .screen-user > .name:after {
 	top: 45%;
 	left: -1.5rem;
 }
 
-.screen>.screen-content>.screen-user>.name:before {
+.screen > .screen-content > .screen-user > .name:before {
 	top: 55%;
 	right: -1.5rem;
 }
 
-.screen>.screen-content>.screen-user>.name:before,
-.screen>.screen-content>.screen-user>.name:after {
+.screen > .screen-content > .screen-user > .name:before,
+.screen > .screen-content > .screen-user > .name:after {
 	height: 4px;
 	width: 4px;
 	position: absolute;
@@ -358,7 +368,7 @@ body {
 	border-radius: 2px;
 }
 
-.screen>.screen-content>.screen-user>.screen-links>a {
+.screen > .screen-content > .screen-user > .screen-links > a {
 	color: white;
 	display: inline;
 	font-size: 1.6rem;
@@ -368,15 +378,15 @@ body {
 }
 
 #footer,
-.screen>.screen-content>.screen-user {
-	font-family: "Source Code Pro", "Courier New", Courier, monospace;
+.screen > .screen-content > .screen-user {
+	font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
 	color: white;
 	text-align: center;
 	text-transform: uppercase;
 }
 
-.screen>.screen-image {
-	background-image: url("../images/846-2000x3000.jpg");
+.screen > .screen-image {
+	background-image: url('../images/846-2000x3000.jpg');
 	/* https://picsum.photos/2000/1500.jpg */
 	height: 100%;
 	width: 100%;
@@ -393,7 +403,7 @@ body {
 	animation: pan-image 15s linear infinite;
 }
 
-@media(max-width: 700px) {
+@media (max-width: 700px) {
 	.screen {
 		scale: 0.6;
 		margin-bottom: 0rem;
