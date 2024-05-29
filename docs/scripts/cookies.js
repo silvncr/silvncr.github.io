@@ -19,6 +19,6 @@ const read_cookie = (name) => {
 	return null;
 };
 
-const delete_cookie = (name) =>{
+const delete_cookie = (name) => {
 	document.cookie = name + '=; Max-Age=-99999999;';
 };
