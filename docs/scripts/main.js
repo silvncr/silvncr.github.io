@@ -8,20 +8,19 @@ while (x > 0) {
 }
 const pi_out = (pi_calc / 10n ** 20n).toString().slice(1);
 document.getElementById('year').innerHTML = `&nbsp;${new Date().getFullYear()}`;
-for (const [name, link] of [
+for (const [n, l] of [
 	['Discord', 'https://discord.com/invite/kx5cVTWjEg'],
 	['GitHub', 'https://github.com/silvncr'],
-	['Spotify', 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo'],
 	['Twitch', 'https://twitch.tv/silvncr'],
 	['YouTube', 'https://youtube.com/@silvncr'],
 ]) {
 	document.querySelector('.screen-links').innerHTML +=
 		'\n' +
 		[
-			`<a href="${link}" target="_blank" rel="noopener noreferrer"`,
-			`class="${name.toLowerCase()}">`,
-			`<em class="icofont-${name.toLowerCase()}"></em></a>`,
-			`<!--${name}-->`,
+			`<a href="${l}" target="_blank" rel="noopener noreferrer"`,
+			`class="${n.toLowerCase()}">`,
+			`<em class="icofont-${n.toLowerCase()}"></em></a>`,
+			`<!--${n}-->`,
 		].join('\n') +
 		'\n';
 }
@@ -151,11 +150,13 @@ window.addEventListener('keydown', (event) => {
 				} else {
 					found_match = false;
 					for (const [k, m] of Object.entries(messages)) {
-						let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
-						let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
-						if (vault_iter == k_iter) {
-							found_match = true;
-							link.innerHTML = link_span(m);
+						if (!found_match) {
+							let vault_iter = vault_in.replace(/,/g, '').toLocaleLowerCase();
+							let k_iter = k.replace(/_/g, ' ').toLocaleLowerCase();
+							if (vault_iter == k_iter) {
+								found_match = true;
+								link.innerHTML = link_span(m);
+							}
 						}
 					}
 					for (const [k, t] of Object.entries(events)) {
@@ -214,6 +215,7 @@ window.addEventListener('keydown', (event) => {
 					link.innerHTML = `really, ${pi_game_counter} digits?!`;
 					pi_game_active = pi_game_prompt = false;
 					pi_game_counter = 0;
+					call_pi();
 				} else {
 					pi_game_counter += 1;
 					link.innerHTML = pi_game_counter;
@@ -239,12 +241,6 @@ window.addEventListener('keydown', (event) => {
 		}
 	}
 });
-const trophies_alert = () => {
-	if (document.getElementById('trophies').innerText.length > 0) {
-		link.innerHTML = 'These are your trophies! How many can you find?&nbsp;'
-			+ '<span onclick="tutorial()">🏆</span>';
-	}
-};
 const link_span_click = (n) => {
 	click_order += n.toString();
 	if (click_order.endsWith('3124')) {

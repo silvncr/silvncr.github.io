@@ -69,7 +69,6 @@ const messages = {
 };
 
 const redirects = {
-	finality: ['hope you enjoy', 'https://silvncr.github.io/finality'],
 	rickroll: ['never gonna give you up...', 'https://youtu.be/dQw4w9WgXcQ'],
 };
 
@@ -78,7 +77,7 @@ const events = {
 		if (!frog) {
 			link.innerHTML = 'take care of him';
 			frog = true;
-			document.getElementById('trophies').innerHTML += '🐸';
+			trophy('🐸');
 			download_file(
 				'258 - Mudkip - C6D800000000.pk8',
 				'258 - Mudkip - C6D800000000.pk8'
@@ -92,8 +91,8 @@ const events = {
 	},
 	twenty_one: () => {
 		if (password_length == 20) {
-			link.innerHTML = '* your world has been expanded... *';
-			document.getElementById('trophies').innerHTML += '🔓';
+			link.innerHTML = '* your world has expanded... *';
+			trophy('🔓');
 			password_length = 21;
 		} else {
 			link.innerHTML = "that's enough for now";
@@ -112,12 +111,61 @@ const events = {
 	},
 };
 
+const trophies_list = [
+	'🏆',
+	'🔑',
+	'🔓',
+	'🐸',
+	'🥧',
+	'🧩',
+	'🙌',
+	'🎈',
+	'🏓',
+	'✨',
+	'🎀',
+];
+let obtained = [];
+
+const refresh_trophies = () => {
+	document.getElementById('trophies').innerHTML = trophies_list
+		.filter(_t => obtained.includes(_t))
+		.map(_t => `<span class="trophy" onclick="trophies_alert()">${_t}</span>`)
+		.join('');
+};
+
+const trophy = (t) => {
+	if (trophies_list.includes(t) && !obtained.includes(t)) {
+		obtained.push(t);
+	}
+	refresh_trophies();
+};
+
+const trophies_alert = () => {
+	if (document.getElementById('trophies').innerText.length > 0) {
+		link.innerHTML =
+			'These are your trophies! How many can you find?' +
+			(!tutorial_event
+				? '&nbsp;<span class="trophy" onclick="tutorial()">🏆</span>'
+				: '');
+	}
+};
+
 const tutorial = () => {
 	if (!tutorial_event) {
-		link.innerHTML = 'you can have that one for free! keep it up!';
-		document.getElementById('trophies').innerHTML += '🏆';
+		link.innerHTML = 'you can have that one for free!';
+		trophy('🏆');
 		tutorial_event = true;
 	} else {
 		link.innerHTML = 'you already collected that trophy!';
 	}
 };
+
+const call_pi = () => {
+	trophy('🥧');
+};
+
+document.addEventListener('readystatechange', () => {
+	if (document.readyState == 'complete') {
+		refresh_trophies();
+	}
+});

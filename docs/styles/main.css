@@ -185,9 +185,13 @@
 	z-index: 1000;
 }
 
-#trophies,
-#info {
+#info,
+#trophies {
 	display: block;
+}
+
+.trophy:is(:hover, :focus) {
+	cursor: pointer;
 }
 
 body {
