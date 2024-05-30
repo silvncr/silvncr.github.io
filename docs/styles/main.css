@@ -200,7 +200,7 @@
 }
 
 .trophy:is(:hover, :focus) {
-	cursor: pointer;
+	cursor: help;
 }
 
 body {

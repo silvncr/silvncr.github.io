@@ -98,9 +98,9 @@ const events = {
 	version: () => {
 		if (!showing_version) {
 			link.innerHTML = 'okay, fine';
-			document.getElementById(
-				'version'
-			).innerHTML = `-&nbsp;v${trophies_list.length}`;
+			document.getElementById('version').innerHTML = `-&nbsp;v${
+				Object.keys(trophies_list).filter((_t) => trophies_list[_t]).length
+			}`;
 			showing_version = true;
 		} else {
 			link.innerHTML = 'never mind';
@@ -120,52 +120,81 @@ const link_span_click = (n) => {
 	}
 };
 
-const trophies_list = [
-	//'✨',
-	'🍰',
-	//'🎀',
-	//'🎂',
-	//'🎈',
-	//'🎨',
-	//'🏁',
-	'🏆',
-	//'🏓',
-	'🐸',
-	'🔓',
-	'🥧',
-	//'🧩',
-	//'🙌',
-];
+const trophies_list = {
+	'✨': null,
+	'🍰': 'You visited this page on my birthday! 🎉',
+	'🎀': null,
+	'🎂': null,
+	'🎃': null,
+	'🎈': null,
+	'🎨': 'You found every colour theme! Which one was your favourite?',
+	'🎭': null,
+	'🏁': null,
+	'🏆': 'You completed the tutorial!',
+	'🏓': null,
+	'🐸': 'OAK: RED! How is my old POKéMON?',
+	'💊': null,
+	'💎': null,
+	'💸': null,
+	'🔓': 'You made something happen! What could it be?',
+	'🥧': 'You maxed out the Pi Game! Why!?',
+	'🧩': null,
+	'🙌': null,
+};
 let obtained = read_cookie('trophies')
 	? read_cookie('trophies').split(',')
 	: [];
 
-const refresh_trophies = () => {
-	document.getElementById('trophies').innerHTML =
-		'\n' +
-		trophies_list
-			.filter((_t) => obtained.includes(_t))
-			.map(
-				(_t) => `<span class="trophy" onclick="trophies_alert()">${_t}</span>`
-			)
-			.join('') +
-		'\n';
+const update_trophies = () => {
+	let trophies = Object.keys(trophies_list)
+		.filter((_t) => obtained.includes(_t) && trophies_list[_t])
+		.map(
+			(_t) =>
+				`<span class="trophy" title="${trophies_list[_t]}" ` +
+				`onclick="trophies_alert()">${_t}</span>`
+		);
+
+	let chunks = [];
+	for (let i = 0; i < trophies.length; i++) {
+		let chunk_index = Math.floor(
+			i /
+				(obtained.length <= 4
+					? 12
+					: trophies.length / 2 <= 12
+					? Math.ceil(trophies.length / 2)
+					: 12)
+		);
+		chunks[chunk_index] = (chunks[chunk_index] || '') + trophies[i];
+	}
+
+	let result = chunks
+		.map((chunk) => {
+			let div = document.createElement('div');
+			div.innerHTML = chunk;
+			return div;
+		})
+		.reverse();
+
+	document.getElementById('trophies').innerHTML = '';
+	result.forEach((div) => document.getElementById('trophies').appendChild(div));
+
 	write_cookie('trophies', obtained.join(','));
 };
 
 const trophy = (t) => {
 	if (!obtained.includes(t)) {
-		obtained.push(t);
-		if (!trophies_list.includes(t)) {
+		if (Object.keys(trophies_list).includes(t)) {
+			obtained.push(t);
+		} else {
 			console.log('invalid trophy:', t);
 		}
 	}
-	refresh_trophies();
+	update_trophies();
 };
 
 const reset_trophies = () => {
 	obtained = [];
-	refresh_trophies();
+	update_trophies();
 	location.reload();
 };
 
@@ -213,15 +242,18 @@ document.addEventListener('readystatechange', () => {
 		} else {
 			change(colours.cyan);
 		}
-		refresh_trophies();
+		update_trophies();
+		if (obtained.includes('🎨')) {
+			all_colours_found = true;
+		}
 		if (obtained.includes('🏆')) {
 			tutorial_event = true;
 		}
-		if (obtained.includes('🔓')) {
-			password_length = 21;
-		}
 		if (obtained.includes('🐸')) {
 			frog = true;
+		}
+		if (obtained.includes('🔓')) {
+			password_length = 21;
 		}
 	}
 });
@@ -320,6 +352,9 @@ let password_length = 20;
 let showing_version = false;
 let tutorial_event = false;
 let frog = false;
+
+let colours_found = [];
+let all_colours_found = false;
 
 window.addEventListener('keydown', (event) => {
 	let key = event.key.toLowerCase();
@@ -447,6 +482,14 @@ window.addEventListener('keydown', (event) => {
 				for (const [k, v] of Object.entries(colours)) {
 					if (keys_in.endsWith(k)) {
 						change(v);
+						if (!colours_found.includes(k) && !all_colours_found) {
+							colours_found.push(k);
+							if (colours_found.length == Object.keys(colours).length) {
+								trophy('🎨');
+								all_colours_found = true;
+							}
+						}
+						break;
 					}
 				}
 			}
