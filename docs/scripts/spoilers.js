@@ -141,10 +141,15 @@ let obtained = read_cookie('trophies')
 	: [];
 
 const refresh_trophies = () => {
-	document.getElementById('trophies').innerHTML = trophies_list
-		.filter((_t) => obtained.includes(_t))
-		.map((_t) => `<span class="trophy" onclick="trophies_alert()">${_t}</span>`)
-		.join('');
+	document.getElementById('trophies').innerHTML =
+		'\n' +
+		trophies_list
+			.filter((_t) => obtained.includes(_t))
+			.map(
+				(_t) => `<span class="trophy" onclick="trophies_alert()">${_t}</span>`
+			)
+			.join('') +
+		'\n';
 	write_cookie('trophies', obtained.join(','));
 };
 
@@ -176,9 +181,9 @@ const trophies_alert = () => {
 
 const tutorial = () => {
 	if (!tutorial_event) {
-		link.innerHTML = 'you can have that one for free!';
-		trophy('🏆');
 		tutorial_event = true;
+		trophy('🏆');
+		trophies_alert();
 	} else {
 		link.innerHTML = 'you already collected that trophy!';
 	}
