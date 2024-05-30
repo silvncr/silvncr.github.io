@@ -9,12 +9,12 @@ const write_cookie = (name, value, days = 365) => {
 };
 
 const read_cookie = (name) => {
-	var nameEQ = name + '=';
+	var name_eq = name + '=';
 	var ca = document.cookie.split(';');
 	for (var i = 0; i < ca.length; i++) {
 		var c = ca[i];
 		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+		if (c.indexOf(name_eq) == 0) return c.substring(name_eq.length, c.length);
 	}
 	return null;
 };
