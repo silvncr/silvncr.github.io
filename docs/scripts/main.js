@@ -1,9 +1,7 @@
 console.log(
 	`Be warned that 'spoilers.js' contains spoilers for puzzles and other content.
 
-All other files are safe to view (for animations, etc).
-
-Just keep in mind that if something has a vague name, it's probably a spoiler.`
+All other files are safe to view (for animations, etc).`
 );
 
 document.getElementById('year').innerHTML = `${new Date().getFullYear()}`;

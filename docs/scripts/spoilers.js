@@ -2,8 +2,6 @@
 
 WARNING: this file contains puzzle answers and other spoilers!
 
-	Check `main.js` to see what files are safe to view.
-
 */
 
 const messages = {

@@ -14,7 +14,9 @@ const read_cookie = (name) => {
 	for (var i = 0; i < ca.length; i++) {
 		var c = ca[i];
 		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-		if (c.indexOf(name_eq) == 0) return c.substring(name_eq.length, c.length);
+		if (c.indexOf(name_eq) == 0) {
+			return c.substring(name_eq.length, c.length);
+		}
 	}
 	return null;
 };

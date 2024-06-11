@@ -29,7 +29,7 @@ document.querySelector('.screen').onmouseenter = (_) => {
 					if (index < iteration) {
 						return name_element.dataset.value[index];
 					}
-					return alphabet[Math.floor(Math.random() * 26)];
+					return alphabet[Math.floor(Math.random() * alphabet.length)];
 				})
 				.join('');
 			if (iteration >= name_element.dataset.value.length) {
