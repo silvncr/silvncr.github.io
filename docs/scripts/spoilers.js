@@ -68,6 +68,15 @@ const redirects = {
 };
 
 const events = {
+	forty_five_over_fifty: () => {
+		if (!forty_five) {
+			link.innerHTML = 'the journey begins';
+			trophy('🧩');
+			forty_five = true;
+		} else {
+			link.innerHTML = link_span('[n]e[ver] for[g]et t[he] [past]');
+		}
+	},
 	suboptimal: () => {
 		if (!frog) {
 			link.innerHTML = 'take care of him';
@@ -136,7 +145,7 @@ const trophies_list = {
 	'💸': null,
 	'🔓': 'You made something happen! What could it be?',
 	'🥧': 'You maxed out the Pi Game! Why!?',
-	'🧩': null,
+	'🧩': 'You started on your journey... where will it take you?',
 	'🙌': null,
 };
 let obtained = read_cookie('trophies')
@@ -253,6 +262,9 @@ document.addEventListener('readystatechange', () => {
 		if (obtained.includes('🔓')) {
 			password_length = 21;
 		}
+		if (obtained.includes('🧩')) {
+			forty_five = true;
+		}
 	}
 });
 
@@ -347,9 +359,10 @@ let vault_in = '';
 let found_match = false;
 let password_length = 20;
 
-let showing_version = false;
 let tutorial_event = false;
+let forty_five = false;
 let frog = false;
+let showing_version = false;
 
 let colours_found = [];
 let all_colours_found = false;
