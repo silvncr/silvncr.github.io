@@ -1,5 +1,5 @@
 console.log(
-	`Be warned that 'spoilers.js' contains spoilers for puzzles and other content.
+	`Be warned that 'spoilers.js' and the 'pages/' folder contain spoilers for puzzles and other content.
 
 All other files are safe to view (for animations, etc).`
 );

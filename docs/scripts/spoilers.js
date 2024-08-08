@@ -31,7 +31,7 @@ const messages = {
 	london_underground: 'mind the gap',
 	maximum_length_exceeded: 'but only sometimes',
 	memory: "it's almost as if it means something...",
-	no_u: 'no u',
+	no_u: '* no u',
 	o_t_t_t: '[another]',
 	on_earth: '[not anymore]',
 	only_if_you_want_it_to_be: 'coming soon to a theater near you',
@@ -40,17 +40,21 @@ const messages = {
 	ptfu1yi35: 'i am in [the classroom]',
 	schoolmaster: 'life is about [cautioned] [education]',
 	silvncr: '[the eyes];<br>[they see] everything',
+	talking_to_myself: '...',
+	talking_to_yourself: '...',
 	this_world_is_mine: 'horse a',
 	thpirseswsorldtoisplmaiyne: 'maybe you should try again',
 	tony_manero: 'time for some additional [dancing]',
+	true_unreal_lies: 'but what did they lie about?',
 	twins_b: "it's almost as if there's an exclusive song...",
 	uc207pr4f57t9: "bro you're actually cheating",
 	ultimate_survivor: 'wrong way, go back',
+	unreal_lies: "they don't mean anything until they're true",
 	victoria: "it's almost as if it means something...",
 	void: 'it grows...',
-	w: 'did you find the vim reference?',
 	welcome_to_the_vault: '* the vault welcomes you back *',
 	welcome_to_the_void: 'it grows...',
+	will_anyone_solve_this: 'probably not',
 	wrong_way_go_back: 'no u',
 	wrong_your_password_is: "bro you're actually cheating",
 	you_are_cheating: 'no u',
@@ -65,6 +69,10 @@ const messages = {
 
 const redirects = {
 	rickroll: ['never gonna give you up...', 'https://youtu.be/dQw4w9WgXcQ'],
+	lies: [
+		'lies are just alternate truths, until proven otherwise',
+		'./pages/realeyes.html',
+	],
 };
 
 const events = {
@@ -139,7 +147,7 @@ const trophies_list = {
 	'🏁': null,
 	'🏆': 'You completed the tutorial!',
 	'🏓': null,
-	'🐸': 'OAK: RED! How is my old POKéMON?',
+	'🐸': "How's my li'l guy doing?",
 	'💊': null,
 	'💎': null,
 	'💸': null,
@@ -437,7 +445,7 @@ window.addEventListener('keydown', (event) => {
 								document.title = 'redirecting...';
 								setTimeout(() => {
 									window.location.href = v[1];
-								}, 1000);
+								}, 3000);
 							}
 						}
 					}
@@ -512,6 +520,6 @@ window.addEventListener('keydown', (event) => {
 
 You're *definitely* NOT supposed to be here...
 
-	Just please don't spoil things for everyone else, okay?
+	Just please don't spoil things for anyone else, okay?
 
 */
