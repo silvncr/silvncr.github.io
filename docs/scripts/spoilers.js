@@ -143,7 +143,7 @@ const trophies_list = {
 	'🎃': null,
 	'🎈': null,
 	'🎨': 'You found every colour theme! Which one was your favourite?',
-	'🎭': null,
+	'🎭': 'You found a "random" page! I wonder which one it was...',
 	'🏁': null,
 	'🏆': 'You completed the tutorial!',
 	'🏓': null,
@@ -261,6 +261,9 @@ document.addEventListener('readystatechange', () => {
 		if (obtained.includes('🎨')) {
 			all_colours_found = true;
 		}
+		if (obtained.includes('🎭')) {
+			any_random = true;
+		}
 		if (obtained.includes('🏆')) {
 			tutorial_event = true;
 		}
@@ -362,12 +365,15 @@ let link_text = link_text_old;
 let click_order = '';
 let vault_active = false;
 
+let processing = false;
+
 let keys_in = '';
 let vault_in = '';
 let found_match = false;
 let password_length = 20;
 
 let tutorial_event = false;
+let any_random = false;
 let forty_five = false;
 let frog = false;
 let showing_version = false;
@@ -381,8 +387,10 @@ window.addEventListener('keydown', (event) => {
 		alphabet
 			.concat(numbers)
 			.concat([' ', '.', 'backspace', 'enter'])
-			.includes(key)
+			.includes(key) &&
+		!processing
 	) {
+		processing = true;
 		keys_in += key;
 		if (vault_active) {
 			if (key == 'enter') {
@@ -442,10 +450,35 @@ window.addEventListener('keydown', (event) => {
 							if (vault_iter == k_iter) {
 								found_match = true;
 								link.innerHTML = link_span(v[0]);
-								document.title = 'redirecting...';
+								document.title = '(redirecting)';
 								setTimeout(() => {
 									window.location.href = v[1];
 								}, 3000);
+							}
+						}
+					}
+					if (vault_in && !found_match) {
+						forward_url = `https://silvncr.github.io/random/${vault_in
+							.replace(/ /g, '-')
+							.replace(/,/g, '')
+							.toLocaleLowerCase()
+							.trim()}`;
+							response = fetch_async(forward_url);
+							if (response && typeof response == 'string') {
+							if (
+								response.contains(
+									'<h1><a href="https://silvncr.github.io/random/">random</a></h1>'
+								)
+							) {
+								window.open(forward_url, '_blank').focus();
+								if (!found_match) {
+									link.innerHTML = 'you found a random page!';
+								}
+								found_match = true;
+								if (!any_random) {
+									any_random = true;
+									trophy('🎭');
+								}
 							}
 						}
 					}
@@ -513,12 +546,13 @@ window.addEventListener('keydown', (event) => {
 				}
 			}
 		}
+		processing = false;
 	}
 });
 
 /*
 
-You're *definitely* NOT supposed to be here...
+You're definitely NOT supposed to be here...
 
 	Just please don't spoil things for anyone else, okay?
 

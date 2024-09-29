@@ -1,7 +1,11 @@
 console.log(
-	`Be warned that 'spoilers.js' and the 'pages/' folder contain spoilers for puzzles and other content.
+	`Hi, curious traveller!
 
-All other files are safe to view (for animations, etc).`
+Be warned that 'spoilers.js' and the 'pages/' folder contain spoilers for puzzles and other content.
+
+All other files are safe to view (for animations, etc).
+
+Some HTTP requests are required for the site to function as intended. For transparency, a console log is made every time my code tries to access a URL.`
 );
 
 document.getElementById('year').innerHTML = `${new Date().getFullYear()}`;
