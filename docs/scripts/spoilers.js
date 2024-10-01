@@ -143,7 +143,7 @@ const trophies_list = {
 	'🎃': null,
 	'🎈': null,
 	'🎨': 'You found every colour theme! Which one was your favourite?',
-	'🎭': 'You found a "random" page! I wonder which one it was...',
+	'🎭': 'You found a \'random\' page! I wonder which one it was...',
 	'🏁': null,
 	'🏆': 'You completed the tutorial!',
 	'🏓': null,

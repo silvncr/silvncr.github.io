@@ -1,5 +1,5 @@
 async function fetch_async(url) {
-	console.log(`making request to ${url}`);
+	console.log(`Sending request to ${url}`);
 	let request = new XMLHttpRequest();
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
