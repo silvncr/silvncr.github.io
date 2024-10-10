@@ -9,7 +9,7 @@ console.log(
 	].join('\n\n')
 );
 
-document.getElementById('year').innerHTML = `${new Date().getFullYear()}`;
+document.getElementById('year').innerHTML = `2021-${new Date().getFullYear()}`;
 document.querySelector('.screen-links').innerHTML += [
 	['Discord', 'https://discord.com/invite/kx5cVTWjEg'],
 	['GitHub', 'https://github.com/silvncr'],
