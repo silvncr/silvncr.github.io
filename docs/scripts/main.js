@@ -14,6 +14,7 @@ document.querySelector('.screen-links').innerHTML += [
 	['Discord', 'https://discord.com/invite/kx5cVTWjEg'],
 	['GitHub', 'https://github.com/silvncr'],
 	['Spotify', 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo'],
+	['Steam', 'https://steamcommunity.com/id/silvncr'],
 	['Twitch', 'https://twitch.tv/silvncr'],
 	['YouTube', 'https://youtube.com/@silvncr'],
 ]

@@ -326,6 +326,10 @@ const colours = {
 		'--primary-1': '0 230 50',
 		'--primary-2': '8 200 30',
 	},
+	mint: {
+		'--primary-1': '0 255 128',
+		'--primary-2': '0 240 120',
+	},
 	none: {
 		'--primary-1': 'auto',
 		'--primary-2': 'auto',
