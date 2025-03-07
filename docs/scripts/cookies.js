@@ -5,7 +5,7 @@ const write_cookie = (name, value, days = 365) => {
 		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 		expires = '; expires=' + date.toUTCString();
 	}
-	document.cookie = name + '=' + (value || '') + expires + '; path=/';
+	document.cookie = name + '=' + (value || '') + expires + '; SameSite=Strict; path=/';
 };
 
 const read_cookie = (name) => {
