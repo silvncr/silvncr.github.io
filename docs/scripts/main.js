@@ -11,20 +11,21 @@ console.log(
 
 document.getElementById('year').innerHTML = `2021-${new Date().getFullYear()}`;
 document.querySelector('.screen-links').innerHTML += [
-	['Discord', 'https://discord.com/invite/kx5cVTWjEg', false],
-	['GitHub', 'https://github.com/silvncr', false],
-	['osu!', 'https://osu.ppy.sh/users/27934898', true],
-	['Spotify', 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo', false],
-	['Steam', 'https://steamcommunity.com/id/silvncr', false],
-	['Twitch', 'https://twitch.tv/silvncr', false],
-	['YouTube', 'https://youtube.com/@silvncr', false],
+	['Discord', 'https://discord.com/invite/kx5cVTWjEg', null],
+	['GitHub', 'https://github.com/silvncr', 'github-mark-white.svg'],
+	['MuseScore', 'https://musescore.com/user/38096226', 'musescore-logo.png'],
+	['osu!', 'https://osu.ppy.sh/users/27934898', 'osu-logo.png'],
+	['Spotify', 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo', null],
+	['Steam', 'https://steamcommunity.com/id/silvncr', null],
+	['Twitch', 'https://twitch.tv/silvncr', null],
+	['YouTube', 'https://youtube.com/@silvncr', null],
 ]
 	.map(
-		([name, link, override]) =>
-			override
+		([name, link, file]) =>
+			file
 				? `<a href="${link}" target="_blank" rel="noopener noreferrer" ` +
 				`title="${name}" class="${name.toLowerCase()}">` +
-				`<img class="icon-img" src="images/${name}.png"></a><!--${name}-->`
+				`<img class="icon-img" src="images/${file}"></a><!--${name}-->`
 				: `<a href="${link}" target="_blank" rel="noopener noreferrer" ` +
 				`title="${name}" class="${name.toLowerCase()}">` +
 				`<em class="icofont-${name.toLowerCase()}"></em></a><!--${name}-->`
