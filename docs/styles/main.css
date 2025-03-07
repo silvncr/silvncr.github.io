@@ -155,6 +155,13 @@
 	content: '\F0488';
 }
 
+html,
+body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden
+}
+
 #blob {
 	height: 34vmax;
 	aspect-ratio: 1;
