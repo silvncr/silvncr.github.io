@@ -11,7 +11,7 @@ console.log(
 
 document.getElementById('year').innerHTML = `2021-${new Date().getFullYear()}`;
 document.querySelector('.screen-links').innerHTML += [
-	['Discord', 'https://discord.com/invite/kx5cVTWjEg', null],
+	['Discord', 'https://discord.com/invite/wkcJzKDUCU', null],
 	['GitHub', 'https://github.com/silvncr', 'github-mark-white.svg'],
 	['MuseScore', 'https://musescore.com/user/38096226', 'musescore-logo.png'],
 	['osu!', 'https://osu.ppy.sh/users/27934898', 'osu-logo.png'],
