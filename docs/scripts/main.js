@@ -13,6 +13,7 @@ document.getElementById('year').innerHTML = `2021-${new Date().getFullYear()}`;
 document.querySelector('.screen-links').innerHTML += [
 	['Discord', 'https://discord.com/invite/wkcJzKDUCU', null],
 	['GitHub', 'https://github.com/silvncr', 'github-mark-white.svg'],
+	['itch.io', 'https://silvncr.itch.io/', 'itchio-textless-white.svg'],
 	['MuseScore', 'https://musescore.com/user/38096226', 'musescore-logo.png'],
 	['osu!', 'https://osu.ppy.sh/users/27934898', 'osu-logo.png'],
 	['Spotify', 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo', null],
