@@ -255,7 +255,7 @@ document.addEventListener('readystatechange', () => {
 					'<span class="trophy" onclick="cake()">🍰</span>';
 			}
 		} else {
-			change(colours.cyan);
+			change(colours.mint);
 		}
 		update_trophies();
 		if (obtained.includes('🎨')) {
