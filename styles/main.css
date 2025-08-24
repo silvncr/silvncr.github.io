@@ -407,7 +407,7 @@ body {
 }
 
 .screen > .screen-image {
-	background-image: url('../images/846-2000x3000.jpg');
+	background-image: url('../images/846-2000x3000-grayscale.jpg');
 	/* https://picsum.photos/2000/1500.jpg */
 	height: 100%;
 	width: 100%;
