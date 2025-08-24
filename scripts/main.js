@@ -32,3 +32,27 @@ document.querySelector('.screen-links').innerHTML += [
 				`<em class="icofont-${name.toLowerCase()}"></em></a><!--${name}-->`
 	)
 	.join('\n');
+
+/*
+const links = [
+	// [name, url, icon file, row number]
+];
+
+function linkHTML([name, link, file]) {
+	return file
+		? `<a href="${link}" target="_blank" rel="noopener noreferrer" ` +
+			`title="${name}" class="${name.toLowerCase()}">` +
+			`<img class="icon-img" src="images/${file}"></a><!--${name}-->`
+		: `<a href="${link}" target="_blank" rel="noopener noreferrer" ` +
+			`title="${name}" class="${name.toLowerCase()}">` +
+			`<em class="icofont-${name.toLowerCase()}"></em></a><!--${name}-->`;
+}
+
+[1, 2].forEach(row => {
+	const container = document.querySelector(`.screen-links-row${row}`);
+	container.innerHTML = links
+		.filter(link => link[3] === row)
+		.map(link => linkHTML(link))
+		.join('\n');
+});
+*/
