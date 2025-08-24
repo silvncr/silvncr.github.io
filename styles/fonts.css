@@ -1,14 +1,14 @@
 @font-face {
-	font-family: 'Source Code Pro';
-	src: url('../fonts/SourceCodePro-Regular.ttf') format('truetype');
+    font-family: 'Source Code Pro';
+    src: url('../fonts/SourceCodePro-Regular.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: 'Caveat';
-	src: url('../fonts/Caveat-Regular.ttf') format('truetype');
+    font-family: 'Caveat';
+    src: url('../fonts/Caveat-Regular.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: 'Segoe UI Emoji';
-	src: url('../fonts/seguiemj.ttf') format('truetype');
+    font-family: 'Segoe UI Emoji';
+    src: url('../fonts/seguiemj.ttf') format('truetype');
 }

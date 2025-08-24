@@ -1,128 +1,139 @@
 :root {
-	--background: #c3cde8;
-	--paper-color: #ffed87;
-	--paper-dark: #e5c93d;
-	--paper-shadow: #c9bf8d;
-	--pin-color: #265cd0;
-	--pin-dark: #06399e;
-	--pin-light: #7d9dfc;
-	--metal: #808080;
-	--highlight: #eae8e8;
+    --background: #c3cde8;
+    --paper-color: #ffed87;
+    --paper-dark: #e5c93d;
+    --paper-shadow: #c9bf8d;
+    --pin-color: #265cd0;
+    --pin-dark: #06399e;
+    --pin-light: #7d9dfc;
+    --metal: #808080;
+    --highlight: #eae8e8;
 }
 
 body {
-	display: flex;
-	justify-content: center;
-	padding: 10vmin;
-	padding-top: 0;
-	padding-bottom: 15vmin;
-	background-color: var(--background);
-	font-family: 'Caveat';
-	font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    padding: 10vmin;
+    padding-top: 0;
+    padding-bottom: 15vmin;
+    background-color: var(--background);
+    font-family: 'Caveat';
+    font-size: 3rem;
 }
 
 .paper {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	min-width: 325px;
-	min-height: 175px;
-	background: linear-gradient(
-		135deg,
-		var(--paper-dark),
-		30%,
-		var(--paper-color)
-	);
-	box-shadow: 3px 3px 2px var(--paper-shadow);
-	transform: rotate(10deg);
-	transform-origin: top left;
-	padding: 20px 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-width: 325px;
+    min-height: 175px;
+    background: linear-gradient(
+        135deg,
+        var(--paper-dark),
+        30%,
+        var(--paper-color)
+    );
+    box-shadow: 3px 3px 2px var(--paper-shadow);
+    transform: rotate(10deg);
+    transform-origin: top left;
+    padding: 20px 50px;
 }
 
 .paper p {
-	margin: auto;
+    margin: auto;
 }
 
 .pin {
-	position: absolute;
-	left: 20px;
-	width: 60px;
-	height: 50px;
+    position: absolute;
+    left: 20px;
+    width: 60px;
+    height: 50px;
 }
 
 .shadow {
-	position: absolute;
-	top: 18px;
-	left: -8px;
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	background: radial-gradient(var(--paper-shadow), 20%, rgba(201, 191, 141, 0));
+    position: absolute;
+    top: 18px;
+    left: -8px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: radial-gradient(
+        var(--paper-shadow),
+        20%,
+        rgba(201, 191, 141, 0)
+    );
 }
 
 .metal {
-	position: absolute;
-	width: 5px;
-	height: 20px;
-	background: linear-gradient(to right, var(--metal), 40%, var(--highlight), 50%, var(--metal));
-	border-radius: 0 0 30% 30%;
-	transform: rotate(50deg);
-	transform-origin: bottom left;
-	top: 15px;
-	border-bottom: 1px solid var(--metal);
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    background: linear-gradient(
+        to right,
+        var(--metal),
+        40%,
+        var(--highlight),
+        50%,
+        var(--metal)
+    );
+    border-radius: 0 0 30% 30%;
+    transform: rotate(50deg);
+    transform-origin: bottom left;
+    top: 15px;
+    border-bottom: 1px solid var(--metal);
 }
 
 .bottom-circle {
-	position: absolute;
-	right: 15px;
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	background-color: var(--pin-color);
-	background: radial-gradient(
-		circle at bottom right,
-		var(--pin-light),
-		25%,
-		var(--pin-dark),
-		90%,
-		var(--pin-color)
-	);
+    position: absolute;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--pin-color);
+    background: radial-gradient(
+        circle at bottom right,
+        var(--pin-light),
+        25%,
+        var(--pin-dark),
+        90%,
+        var(--pin-color)
+    );
 }
 
 .bottom-circle::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: -2px;
-	width: 20px;
-	height: 30px;
-	transform: rotate(55deg);
-	transform-origin: 100% 100%;
-	border-radius: 0 0 40% 40%;
-	background: linear-gradient(
-		to right,
-		var(--pin-dark),
-		30%,
-		var(--pin-color),
-		90%,
-		var(--pin-light)
-	);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 20px;
+    height: 30px;
+    transform: rotate(55deg);
+    transform-origin: 100% 100%;
+    border-radius: 0 0 40% 40%;
+    background: linear-gradient(
+        to right,
+        var(--pin-dark),
+        30%,
+        var(--pin-color),
+        90%,
+        var(--pin-light)
+    );
 }
 
 .bottom-circle::after {
-	content: '';
-	position: absolute;
-	right: -10px;
-	top: -5px;
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: radial-gradient(
-		circle at right,
-		var(--pin-light),
-		30%,
-		var(--pin-color),
-		var(--pin-dark) 80%
-	);
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at right,
+        var(--pin-light),
+        30%,
+        var(--pin-color),
+        var(--pin-dark) 80%
+    );
 }
