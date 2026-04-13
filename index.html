@@ -2,12 +2,38 @@
 <html>
 
 <head>
-    <link href="favicon.ico" rel="icon">
     <title>riverpaper :3</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="favicon.ico" rel="icon">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
     <style>
         @font-face {
             font-family: 'JetBrains Mono';
             src: url('fonts/JetBrainsMonoNL-Regular.ttf');
+        }
+        @media only screen and (max-width: 600px) {
+            :root {
+                --content-margin-height: 6rem;
+                --content-margin-width: 2rem;
+                --font-size-mult: 1;
+                --min-width: 26rem;
+            }
+        }
+        @media only screen and (min-width: 600px) {
+            :root {
+                --content-margin-height: 6rem;
+                --content-margin-width: 4rem;
+                --font-size-mult: 1.2;
+                --min-width: 32rem;
+            }
+        }
+        @media only screen and (min-width: 924px) {
+            :root {
+                --content-margin-height: 6rem;
+                --content-margin-width: 6rem;
+                --font-size-mult: 1;
+                --min-width: 45rem;
+            }
         }
         body {
             background-color: #1e1e1e;
@@ -15,48 +41,66 @@
             font-family: 'JetBrains Mono', 'Anonymous Pro', 'Source Code Pro', 'Courier New', Courier, monospace;
         }
         #content {
-            margin: 6rem;
-            width: 40rem;
+            font-size: clamp(1rem, calc(var(--font-size-mult) * 1rem), 2rem);
+            margin: var(--content-margin-height) var(--content-margin-width);
+            width: max(var(--min-width), calc(100% - calc(var(--content-margin-width) * 2)));
         }
         a {
-            color: #00ffaa;
+            color: #f0a070;
             text-decoration: none;
+            text-shadow: #505050 1px 1px;
         }
+        a:not(.empty-link):hover {
+            text-decoration: underline;
+        }
+        /* a::before {
+            content: ">";
+            font-size: calc(var(--font-size-mult) * 0.5rem);
+            vertical-align: middle;
+        } */
+        /* a::after {
+            content: "<";
+            font-size: calc(var(--font-size-mult) * 0.5rem);
+            vertical-align: middle;
+        } */
         h1, h2, h3, h4, h5, h6 {
             color: #c0c0c0
         }
+        del {
+            text-decoration-color: #a0a0a0;
+            text-decoration-thickness: 2px;
+        }
     </style>
-    <!---
     <script defer>
         window.onload = () => {
             for (const [key, val] of Object.entries(
                 {
                     dev: {
-                        github: 'https://github.com/silvncr',
-                        itchio: 'https://silvncr.itch.io/',
+                        github: 'https://github.com/riverpaper',
+                        itch: 'https://riverpaper.itch.io/',
                     },
                     gaming: {
-                        cedb: 'https://cedb.me/user/2a45a00e-40c2-49d8-aab9-14edd2791c65',
+                        // cedb: 'https://cedb.me/user/2a45a00e-40c2-49d8-aab9-14edd2791c65',
                         // geometrydash: '',
-                        infinitebacklog: 'https://infinitebacklog.net/users/turnip',
+                        // infinitebacklog: 'https://infinitebacklog.net/users/turnip',
                         osu: 'https://osu.ppy.sh/users/27934898',
-                        retroachievements: 'https://retroachievements.org/user/silvncr',
-                        speedruncom: 'https://speedrun.com/users/silvncr',
+                        retroachievements: 'https://retroachievements.org/user/riverpaper',
+                        speedrun: 'https://speedrun.com/users/riverpaper',
                         steam: 'https://steamcommunity.com/id/silvncr',
                     },
                     music: {
-                        bandcamp: 'https://silvncr.bandcamp.com/',
+                        bandcamp: 'https://riverpaper.bandcamp.com/',
                         musescore: 'https://musescore.com/user/38096226',
-                        spotify: 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo',
+                        // _spotify: 'https://open.spotify.com/artist/0c6XPiWIn7uYlWB9B6puvo',
                     },
                     social: {
-                        // bluesky: 'https://bsky.app/profile/silvncr.github.io',
+                        bluesky: 'https://bsky.app/profile/riverpaper.github.io',
                         discord: 'https://discord.com/invite/wkcJzKDUCU',
-                        // instagram: 'https://instagram.com/silvncr/',
+                        // _instagram: 'https://instagram.com/silvncr/',
                     },
                     video: {
-                        twitch: 'https://twitch.tv/silvncr',
-                        youtube: 'https://youtube.com/@silvncr',
+                        twitch: 'https://twitch.tv/riverpaper_',
+                        youtube: 'https://youtube.com/@riverpaper',
                     },
                 }
             )) {
@@ -70,7 +114,9 @@
                     // a.setAttribute('target', '_blank');
                     // links.push(a);
                     links.push(
-                        `<a href="${link}" name="${name}" rel="noopener noreferrer" target="_blank">${name}</a>`
+                        name.startsWith('_')
+                            ? `<a class="empty-link"><del>${name.replace(/_/, '')}</del></a>`
+                            : `<a href="${link}" name="${name}" rel="noopener noreferrer" target="_blank">${name}</a>`
                     );
                 }
                 console.log(links);
@@ -102,28 +148,24 @@
             */
         }
     </script>
-    -->
 </head>
 
 <body>
     <div id="content">
         <header>
-            <h2>heya, i'm <del style="text-decoration-thickness: 2px;"><span style="color: #00ffaa;">silvncr</span></del> <span style="color: #f0a070;">riverpaper</span>!!!</h2>
-            <p>a hobbyist musician, programmer, and more</p>
+            <h2 style="display: inline;">heya, i'm <span style="color: #f0a070;">riverpaper</span>!! :3</h2>
+            <span style="display: inline-block;">&nbsp;&nbsp;(formerly <span style="color: #00ffff;">turnip</span>, <span style="color: #00ffaa;">silvncr</span>)</span>
+            <h4>a hobbyist musician, programmer, and more</h4>
             <br>
         </header>
         <main>
-            <!--
             <h4>my stuff</h4>
             <div id="links"></div>
             <br>
             <p>
-                (more coming soon?)
+                (updated regularly)
             </p>
-            -->
-            <p style="color: #c0c0c0;">i'm changing my username! things are broken, check back later <3</p>
         </main>
-        <!--
         <footer>
             <br>
             <hr>
@@ -131,21 +173,20 @@
             <h4>previous homepages</h4>
             <ul>
                 <li>
-                    <a><s>cosmos</s></a>
+                    <a style="color: #00ffff" class="empty-link" rel="noopener noreferrer"><del>cosmos</del></a> (not yet archived)
                 </li>
                 <li>
-                    <a><s>portfolio</s></a>
+                    <a style="color: #00ffff" class="empty-link" rel="noopener noreferrer"><del>portfolio</del></a> (not yet archived)
                 </li>
                 <li>
-                    <a href="vault.html">vault</a> <b>**(recommended to see)**</b>
+                    <a style="color: #00ffaa" class="empty-link" rel="noopener noreferrer"><del>vault</del></a> (reworking after name change)
                 </li>
             </ul>
             <br>
             <p>
-                v1.2 of this page
+                v1.3 of this page
             </p>
         </footer>
-        -->
     </div>
 </body>
 
